@@ -15,7 +15,7 @@ import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.api.trace.StatusCode;
 import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.context.Scope;
-
+Tracer tracer = openTelemetry.getTracer("io.opentelemetry.example");
 pipeline {
     agent any
 
@@ -27,7 +27,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                Tracer tracer = openTelemetry.getTracer("io.opentelemetry.example");
+                
                 // Get some code from a GitHub repository
                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
 
