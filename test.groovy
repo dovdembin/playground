@@ -1,4 +1,4 @@
-@Grab(group='io.opentelemetry', module='opentelemetry-bom', version='1.20.1', type='pom')
+
 
 
 def countTestOTel(duration, end_status) {
