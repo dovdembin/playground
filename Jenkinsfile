@@ -1,21 +1,9 @@
-@Grapes([
-   @Grab(group='io.opentelemetry', module='opentelemetry-bom', version='1.20.1', type='pom'),
-   @Grab(group='io.opentelemetry', module='opentelemetry-api', version='1.23.0'),
-   @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.0'),
-   @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.22.0'),
-   @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.20.1-alpha', scope='runtime')
-])
-import io.opentelemetry.api.OpenTelemetry;
-import io.opentelemetry.api.common.AttributeKey;
-import io.opentelemetry.api.common.Attributes;
-import io.opentelemetry.api.metrics.LongCounter;
-import io.opentelemetry.api.metrics.LongHistogram;
-import io.opentelemetry.api.metrics.Meter;
-import io.opentelemetry.api.trace.Span;
-import io.opentelemetry.api.trace.StatusCode;
-import io.opentelemetry.api.trace.Tracer;
-import io.opentelemetry.context.Scope;
-Tracer tracer = openTelemetry.getTracer("io.opentelemetry.example");
+@WithSpan
+    public void myMethod(@SpanAttribute("parameter1") String parameter1,
+        @SpanAttribute("parameter2") long parameter2) {
+         
+    }
+
 pipeline {
     agent any
 
