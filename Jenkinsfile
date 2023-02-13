@@ -1,9 +1,4 @@
-@WithSpan
-    public void myMethod(@SpanAttribute("parameter1") String parameter1,
-        @SpanAttribute("parameter2") long parameter2) {
-         
-    }
-
+@Grab(group='io.opentelemetry', module='opentelemetry-bom', version='1.20.1', type='pom')
 pipeline {
     agent any
 
