@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                Tracer tracer = openTelemetry.getTracer("io.opentelemetry.example");
                 // Get some code from a GitHub repository
                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
 
