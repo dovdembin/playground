@@ -1,4 +1,4 @@
-
+import ExampleConfiguration
 
 
 def countTestOTel(duration, end_status) {
