@@ -2,7 +2,8 @@ import ExampleConfiguration
 
 
 def countTestOTel(duration, end_status) {
-     ExampleConfiguration exampleConfiguration = new ExampleConfiguration()
+   def tools = shell.parse(new File('ExampleConfiguration.groovy'))
+   //   ExampleConfiguration exampleConfiguration = new ExampleConfiguration()
 }
 
 try {
