@@ -1,12 +1,13 @@
-
-
-def countTestOTel(duration, end_status) {
-   def tools = shell.parse(new File('ExampleConfiguration.groovy'))
-   //   ExampleConfiguration exampleConfiguration = new ExampleConfiguration()
+def countTestOTel() {
+    openTelemetry = ExampleConfiguration.initOpenTelemetry("http://localhost:4317");
+    tracer = openTelemetry.getTracer("io.opentelemetry.example");
+    exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
+    exampleSpan.setAttribute("koko", "loko");
+    exampleSpan.end();
 }
 
 try {
- countTestOTel(duration, end_status)
+ countTestOTel()
 } catch (Exception e) {
          
     }

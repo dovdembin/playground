@@ -38,7 +38,7 @@ public class ExampleConfiguration {
 		            .setTimeout(30, TimeUnit.SECONDS)
 		            .build();
 	    
-		Resource resource = Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "service2")));
+		Resource resource = Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "service3")));
 
 				SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
 				  .addSpanProcessor(BatchSpanProcessor.builder(jaegerOtlpExporter).build())
