@@ -1,3 +1,3 @@
 @Library("shared-library") _
  
-log.info("hello koko loko")
+log("hello koko loko")
