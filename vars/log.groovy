@@ -77,9 +77,9 @@ def func(endpoint){
     Tracer tracer = openTelemetry.getTracer("io.opentelemetry.example");
     Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
     Scope scope = exampleSpan.makeCurrent() 
-    scope.exampleSpan.setAttribute("good", "true");
+    exampleSpan.setAttribute("good", "true");
     Thread.sleep(100);
-    scope.exampleSpan.end();
+    exampleSpan.end();
         
 }
 
