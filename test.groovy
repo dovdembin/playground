@@ -1,14 +1,10 @@
-
-def countTestOTel() {
-    GroovyShell shell = new GroovyShell()
-def tools = shell.parse(new File('ExampleConfiguration.groovy'))
-tools.greet()  
-}
-
-try {
- countTestOTel()
-} catch (Exception e) {
-         
+pipeline {
+    agent any 
+    stages {
+        stage('Example') { 
+            steps {
+                sh 'echo hello world' 
+            }
+        }
     }
-
-
+}
