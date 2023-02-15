@@ -4,6 +4,7 @@
    @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.0'),
    @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.22.0'),
    @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.20.1-alpha', scope='runtime')
+   @Grab(group='io.grpc', module='grpc-stub', version='1.53.0')
 ])
 
 import java.util.concurrent.TimeUnit;
@@ -31,6 +32,7 @@ import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.api.trace.StatusCode;
 import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.context.Scope;
+import io.grpc.*
 
 public class ExampleConfiguration {
 
