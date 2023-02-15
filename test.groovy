@@ -1,5 +1,5 @@
 def countTestOTel() {
-    openTelemetry = ExampleConfiguration.initOpenTelemetry("http://localhost:4317");
+    openTelemetry = ExamplesConfiguration.initOpenTelemetry("http://localhost:4317");
     tracer = openTelemetry.getTracer("io.opentelemetry.example");
     exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
     scope = exampleSpan.makeCurrent() 
