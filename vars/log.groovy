@@ -79,7 +79,6 @@ def func(endpoint){
 	    Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
         Scope scope = exampleSpan.makeCurrent() 
         exampleSpan.setAttribute("good", "true");
-        Thread.sleep(100);
 	    Thread.sleep(1000);
         println("koko lolo")
         exampleSpan.end();
