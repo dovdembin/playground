@@ -77,12 +77,13 @@ def func(endpoint){
     Tracer tracer = openTelemetry.getTracer("io.opentelemetry.example");
     
     for (int i = 0; i < 25; i++) {
-	    Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
-        Scope scope = exampleSpan.makeCurrent() 
-        exampleSpan.setAttribute("good", "true");
-        Thread.sleep(100);
-        exampleSpan.end();
-	    Thread.sleep(1000);
+	    // Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
+        // Scope scope = exampleSpan.makeCurrent() 
+        // exampleSpan.setAttribute("good", "true");
+        // Thread.sleep(100);
+        // exampleSpan.end();
+	    // Thread.sleep(1000);
+        sh "koo"
 	}
       
 }
