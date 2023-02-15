@@ -1,4 +1,4 @@
-def call(Map config = [:] ) {
+def method1(Map config = [:] ) {
     sh "echo custom hello ${config.name} today is ${config.dayOfWeek}."
 }
 
