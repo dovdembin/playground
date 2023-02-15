@@ -1,3 +1,3 @@
-def func(Map config = [:] ) {
-    sh "echo custom hello ${config.name} today is ${config.dayOfWeek}."
+def info(message) {
+    sh "echo ${message}"
 }

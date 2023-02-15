@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Example') { 
             steps {
-                global.func(name:"koko", dayOfWeek:"Thursday") 
+                global.info "hello world"
             }
         }
     }
