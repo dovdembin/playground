@@ -73,9 +73,10 @@ public class ExampleConfiguration {
 
 def func(endpoint){
     println("this is endpoint: ${endpoint}")
-
+    
     OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(endpoint);
-    Tracer tracer = openTelemetry.getTracer();
+     
+    Tracer tracer = openTelemetry.getTracer("io.opentelemetry");
     for (int i = 0; i < 25; i++) {
 	    Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
         Scope scope = exampleSpan.makeCurrent() 
