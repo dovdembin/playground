@@ -2,7 +2,7 @@
  
  
 try {
-    log.info "hello koko  world"
+    log.info("hello koko loko")
 } catch (Exception e) {
          
 }
