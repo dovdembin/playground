@@ -1,6 +1,6 @@
 @Library("shared-library") _
  
-log.func("http://localhost:4317")
+log.func("http://10.135.85.232:4317")
 
 try {
 
