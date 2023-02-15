@@ -59,8 +59,13 @@ public class ExampleConfiguration {
 	}
 }
 
-def func(message){
-     println("koko")
+def func(endpoint){
+    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(endpoint);
+     
+    Tracer tracer = openTelemetry.getTracer("io.opentelemetry.example");
+    Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
+    exampleSpan.setAttribute("good", "true");
+    exampleSpan.end();
 }
 
 

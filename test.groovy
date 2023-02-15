@@ -1,6 +1,6 @@
 @Library("shared-library") _
  
-log.func("hello koko loko")
+log.func("http://localhost:4317")
 
 try {
 
