@@ -1,4 +1,4 @@
-def info(message){
+def call(message){
     sh "koko"
 }
 
