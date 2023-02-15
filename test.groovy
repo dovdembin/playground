@@ -1,13 +1,8 @@
 @Library("shared-library") _
-pipeline {
-    agent any 
-    stages {
-        stage('Example') { 
-            steps {
-                script {
-                    log.info "hello world"
-                }
-            }
-        }
-    }
+ 
+ 
+try {
+    log.info "hello koko  world"
+} catch (Exception e) {
+         
 }
