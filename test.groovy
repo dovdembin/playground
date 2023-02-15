@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Example') { 
             steps {
-                global.info "hello world"
+                log.info "hello world"
             }
         }
     }
