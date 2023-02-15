@@ -83,7 +83,7 @@ def func(endpoint){
         // Thread.sleep(100);
         // exampleSpan.end();
 	    // Thread.sleep(1000);
-        sh "koo"
+        println("koko")
 	}
       
 }
