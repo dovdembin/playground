@@ -1,4 +1,4 @@
-def call(message){
+def func(message){
     sh "koko"
 }
 
