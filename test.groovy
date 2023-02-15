@@ -2,8 +2,8 @@
  
  
 try {
-    log.info("hello koko loko")\
-    println "Printing to Console"
+    def myVar = log.info("hello koko loko")
+    println(myVar)
 } catch (Exception e) {
          
 }
