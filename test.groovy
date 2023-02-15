@@ -1,9 +1,10 @@
 @Library("shared-library") _
  
-log.func(OTEL_EXPORTER_OTLP_ENDPOINT)
-
-try {
-
+ 
+ try {
+    stage("Running Stage: ") {
+        log.func(env.OTEL_EXPORTER_OTLP_ENDPOINT)
+    }
 } catch(Exception e) {
 
 }
