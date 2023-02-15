@@ -58,3 +58,7 @@ public class ExampleConfiguration {
 		return openTelemetry;
 	}
 }
+
+def greet() {
+    println "Hello World!"
+}
