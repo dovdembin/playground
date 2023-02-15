@@ -2,7 +2,8 @@
  
  
 try {
-    log.info("hello koko loko")
+    log.info("hello koko loko")\
+    println "Printing to Console"
 } catch (Exception e) {
          
 }
