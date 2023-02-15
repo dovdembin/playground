@@ -1,6 +1,6 @@
 def countTestOTel() {
     GroovyShell shell = new GroovyShell()
-def tools = shell.parse(new File('function_tools.gvy'))
+def tools = shell.parse(new File('ExampleConfiguration.groovy'))
 tools.greet()  
 }
 
