@@ -80,7 +80,7 @@ def func(endpoint){
     exampleSpan.setAttribute("good", "true");
     Thread.sleep(100);
     exampleSpan.end();
-        
+      
 }
 
 
