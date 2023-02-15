@@ -1,6 +1,6 @@
 @Library("shared-library") _
  
-log.func("http://10.135.85.232:4317")
+log.func(OTEL_EXPORTER_OTLP_ENDPOINT)
 
 try {
 
