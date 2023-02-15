@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Example') { 
             steps {
-                global() 
+                global("koko", "Thursday") 
             }
         }
     }
