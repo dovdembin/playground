@@ -77,7 +77,8 @@ def otelcli(Map config = [:]){
     Tracer tracer = openTelemetry.getTracer("scope");
     for (int i = 0; i < 25; i++) {
 	    Span exampleSpan = tracer.spanBuilder("otel-jenkins").startSpan();
-        Scope scope = exampleSpan.makeCurrent() 
+        Scope scope = exampleSpan.makeCurrent();
+		exampleSpan.addEvent("Event 0");
         exampleSpan.setAttribute("good", "true");
 	    Thread.sleep(1000);
 		scope.close();
