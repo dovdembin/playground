@@ -75,10 +75,10 @@ def otelcli(Map config = [:]){
     println("this is endpoint: ${config.endpoint}")
     OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(jaegerEndpoint:config.endpoint, servicename:config.servicename);
     Tracer tracer = openTelemetry.getTracer("scope");
-	Meter meter = openTelemetry.getMeter("scope");
-	LongCounter counter = meter.counterBuilder("example_counter").build();
+	// Meter meter = openTelemetry.getMeter("scope");
+	// LongCounter counter = meter.counterBuilder("example_counter").build();
     for (int i = 0; i < 25; i++) {
-		counter.add(1);
+		// counter.add(1);
 	    Span exampleSpan = tracer.spanBuilder("otel-jenkins").startSpan();
         Scope scope = exampleSpan.makeCurrent();
 		exampleSpan.addEvent("Event 0");
