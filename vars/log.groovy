@@ -50,7 +50,7 @@ public class ExampleConfiguration {
 		            .setTimeout(30, TimeUnit.SECONDS)
 		            .build();
 	    
-		Resource resource = Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, config.service_name)));
+		Resource resource = Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, config.servicename)));
 
 				SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
 				  .addSpanProcessor(BatchSpanProcessor.builder(jaegerOtlpExporter).build())
@@ -71,9 +71,9 @@ public class ExampleConfiguration {
 	}
 }
 
-def otelcli(String endpoint, String servicename, String Map config = [:]){
-    println("this is endpoint: ${endpoint}")
-    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(jaegerEndpoint:config.endpoint, servieName:servicename);
+def otelcli(Map config = [:]){
+    println("this is endpoint: ${config.endpoint}")
+    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(jaegerEndpoint:config.endpoint, servicename:config.servicename);
     Tracer tracer = openTelemetry.getTracer("scope");
     for (int i = 0; i < 25; i++) {
 	    Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
