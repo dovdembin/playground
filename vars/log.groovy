@@ -74,7 +74,7 @@ public class ExampleConfiguration {
 def func(Map config = [:]){
     println("this is endpoint: ${config.endpoint}")
     
-    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(endpoint);
+    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(config.endpoint);
      
     Tracer tracer = openTelemetry.getTracer("scope");
     for (int i = 0; i < 25; i++) {
