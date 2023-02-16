@@ -50,7 +50,7 @@ public class ExampleConfiguration {
 		            .setTimeout(30, TimeUnit.SECONDS)
 		            .build();
 	    
-		Resource resource = Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "service4")));
+		Resource resource = Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "otel-cli-java")));
 
 				SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
 				  .addSpanProcessor(BatchSpanProcessor.builder(jaegerOtlpExporter).build())
