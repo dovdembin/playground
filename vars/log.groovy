@@ -36,21 +36,21 @@ import io.grpc.*
 
 public class ExampleConfiguration {
 
-	static OpenTelemetry initOpenTelemetry(String jaegerEndpoint) {
+	static OpenTelemetry initOpenTelemetry(Map config = [:]) {
 		// Export traces to Jaeger over OTLP
 	    OtlpGrpcSpanExporter jaegerOtlpExporter =
 	        OtlpGrpcSpanExporter.builder()
-	            .setEndpoint(jaegerEndpoint)
+	            .setEndpoint(config.jaegerEndpoint)
 	            .setTimeout(30, TimeUnit.SECONDS)
 	            .build();
 	    
 	    OtlpGrpcMetricExporter metricOtlp =
 	    		OtlpGrpcMetricExporter.builder()
-		            .setEndpoint(jaegerEndpoint)
+		            .setEndpoint(config.jaegerEndpoint)
 		            .setTimeout(30, TimeUnit.SECONDS)
 		            .build();
 	    
-		Resource resource = Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "otel-cli-java")));
+		Resource resource = Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, config.service_name)));
 
 				SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
 				  .addSpanProcessor(BatchSpanProcessor.builder(jaegerOtlpExporter).build())
@@ -73,7 +73,7 @@ public class ExampleConfiguration {
 
 def otelcli(Map config = [:]){
     println("this is endpoint: ${config.endpoint}")
-    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(config.endpoint);
+    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(jaegerEndpoint:config.endpoint, servieName:config.serive-name);
     Tracer tracer = openTelemetry.getTracer("scope");
     for (int i = 0; i < 25; i++) {
 	    Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
