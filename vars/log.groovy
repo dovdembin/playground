@@ -82,7 +82,7 @@ def func(endpoint){
         Scope scope = exampleSpan.makeCurrent() 
         exampleSpan.setAttribute("good", "true");
 	    Thread.sleep(1000);
-		scope.close()
+		scope.close();
         println("barba papa")
         exampleSpan.end();
 	}
