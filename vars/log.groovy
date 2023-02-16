@@ -71,7 +71,7 @@ public class ExampleConfiguration {
 	}
 }
 
-def otelCli(Map config = [:]){
+def otelcli(Map config = [:]){
     println("this is endpoint: ${config.endpoint}")
     
     OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(config.endpoint);
