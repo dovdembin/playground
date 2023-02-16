@@ -71,9 +71,9 @@ public class ExampleConfiguration {
 	}
 }
 
-def otelcli(Map config = [:]){
-    println("this is endpoint: ${config.endpoint}")
-    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(jaegerEndpoint:config.endpoint, servieName:config.servicename);
+def otelcli(String endpoint, String servicename, String Map config = [:]){
+    println("this is endpoint: ${endpoint}")
+    OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(jaegerEndpoint:config.endpoint, servieName:servicename);
     Tracer tracer = openTelemetry.getTracer("scope");
     for (int i = 0; i < 25; i++) {
 	    Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();

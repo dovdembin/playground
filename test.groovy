@@ -3,8 +3,5 @@
  
 
 stage("Running Stage: ") {
-    log.otelcli(
-        endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT,
-        servicename:"otel-cli-java"
-        )
+    log.otelcli(env.OTEL_EXPORTER_OTLP_ENDPOINT,"otel-cli-java",va:"koko")
 }
