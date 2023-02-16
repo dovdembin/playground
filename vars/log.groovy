@@ -76,7 +76,7 @@ def otelcli(Map config = [:]){
     OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(jaegerEndpoint:config.endpoint, servicename:config.servicename);
     Tracer tracer = openTelemetry.getTracer("scope");
     for (int i = 0; i < 25; i++) {
-	    Span exampleSpan = tracer.spanBuilder("oteljenkins").startSpan();
+	    Span exampleSpan = tracer.spanBuilder("otel-jenkins").startSpan();
         Scope scope = exampleSpan.makeCurrent() 
         exampleSpan.setAttribute("good", "true");
 	    Thread.sleep(1000);
