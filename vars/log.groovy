@@ -83,6 +83,7 @@ def otelcli(Map config = [:]){
     for (int i = 0; i < 25; i++) {
 		long startTime = System.currentTimeMillis();
 	    Span exampleSpan = tracer.spanBuilder("otel-jenkins").startSpan();
+		println("scope was opened here")
         Scope scope = exampleSpan.makeCurrent();
 		counter.add(1);
 		exampleSpan.addEvent("Event 0");
