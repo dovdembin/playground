@@ -71,8 +71,8 @@ public class ExampleConfiguration {
 	}
 }
 
-def func(endpoint){
-    println("this is endpoint: ${endpoint}")
+def func(Map config = [:]){
+    println("this is endpoint: ${config.endpoint}")
     
     OpenTelemetry openTelemetry = ExampleConfiguration.initOpenTelemetry(endpoint);
      
