@@ -8,7 +8,7 @@ stage("Running Stage: ") {
         counter:"tridevlab.test-counter",
         koko:"1", 
         k44:"2",
-        barba:"3",
+        barbapapa:"3",
         k1:"4",
         k2:"5",
         k3:"6",
