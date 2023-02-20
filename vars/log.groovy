@@ -27,7 +27,7 @@ import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 import io.grpc.*
 
-class Otel {
+public class Otel {
 
 	SdkTracerProvider sdkTracerProvider;
 	SdkMeterProvider sdkMeterProvider;
