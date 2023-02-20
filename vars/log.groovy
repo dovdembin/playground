@@ -73,16 +73,17 @@ public class Otel {
 				.setUnit("1")
 				.build();
 	}
-	
-	def meterCounter(Map config = [:]) {
-		try {
-			AttributesBuilder attr = Attributes.builder();
-			config.each{entry -> attr.put(AttributeKey.stringKey(entry.key), entry.value);}
-			counter.add(1, attr.build());
-		} catch(Exception ex){
-			
-		} finally {
-			sdkMeterProvider.close();
-		}
+}
+
+def meterCounter(Map config = [:]) {
+	Otel otel = new Otel(endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, counter:"tridevlab.test-counter");
+	try {
+		AttributesBuilder attr = Attributes.builder();
+		config.each{entry -> attr.put(AttributeKey.stringKey(entry.key), entry.value);}
+		otel.counter.add(1, attr.build());
+	} catch(Exception ex){
+		
+	} finally {
+		sdkMeterProvider.close();
 	}
 }
