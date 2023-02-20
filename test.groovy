@@ -23,6 +23,5 @@ stage("Running Stage: ") {
         k12:"nn",
         k13:"oo",
         k14:16
-        3:4
         );
 }
