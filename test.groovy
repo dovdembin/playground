@@ -3,7 +3,7 @@
  
 
 stage("Running Stage: ") {
-    Otel otel = new Otel(endpoint:endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, counter:"tridevlab.test-counter").meterCounter(
+    Otel otel = new Otel(endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, counter:"tridevlab.test-counter").meterCounter(
 			koko:"loko", 
 			k44:"bb",
 			barba:"papa",
