@@ -90,9 +90,9 @@ def meterCounter(Map config = [:]) {
 			attr.put(entry.getKey(), entry.getValue());
 		}
 		otel.counter.add(1, attr.build());
-	} catch ( e ) {
-		 
-	} finally {
+	} catch (Exception e) {
+       
+    } finally {
 		closeMeterConnection();
 	}
 }
