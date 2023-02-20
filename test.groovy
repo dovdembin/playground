@@ -4,8 +4,8 @@
 
 stage("Running Stage: ") {
     log.meterCounter(
-        (endpoint):env.OTEL_EXPORTER_OTLP_ENDPOINT,
-        (counter):"tridevlab.test-counter",
+        endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT,
+        counter:"tridevlab.test-counter",
         (test.name):"aa", 
         (test.bpt-suite):"bb",
         (test.bpt-merge-candidate):"cc",
