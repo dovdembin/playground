@@ -31,7 +31,6 @@ stage("Running Stage: ") {
         "test.sequential.appliance":"ttt",
         "test.cyc-test":"r5",
         "test.status":"44re"
-
         ]
     log.meterCounter(map);
 }
