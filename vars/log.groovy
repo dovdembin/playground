@@ -93,6 +93,6 @@ def meterCounter(Map config = [:]) {
 	} catch (Exception e) {
        
     } finally {
-		closeMeterConnection();
+		otel.closeMeterConnection();
 	}
 }
