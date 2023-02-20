@@ -84,6 +84,6 @@ def meterCounter(Map config = [:]) {
 	} catch(Exception ex){
 		
 	} finally {
-		sdkMeterProvider.close();
+		otel.sdkMeterProvider.close();
 	}
 }
