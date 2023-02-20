@@ -79,6 +79,8 @@ def meterCounter(Map config = [:]) {
 	Otel otel;
 	try {
 		otel = new Otel(endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, counter:"tridevlab.test-counter");
+		config.remove("endpoint");
+		config.remove("counter");
 		AttributesBuilder attr = Attributes.builder();
 		config.each{entry -> attr.put(AttributeKey.stringKey(entry.key), entry.value);}
 		otel.counter.add(1, attr.build());
