@@ -81,9 +81,8 @@ public class Otel {
 }
 
 def meterCounter(Map config = [:]) {
-	Otel otel;
 	try {
-		otel = new Otel(endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, counter:"tridevlab.test-counter");
+		Otel otel = new Otel(endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, counter:"tridevlab.test-counter");
 		config.remove("endpoint");
 		config.remove("counter");
 		AttributesBuilder attr = Attributes.builder();
@@ -91,9 +90,8 @@ def meterCounter(Map config = [:]) {
 			attr.put(entry.getKey(), entry.getValue());
 		}
 		otel.counter.add(1, attr.build());
-	} catch (Exception e) {
-       
-    } finally {
 		otel.closeMeterConnection();
+	}  finally {
+		
 	}
 }
