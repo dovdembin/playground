@@ -11,7 +11,7 @@ stage("Running Stage: ") {
         barbapapa:"3",
         k1:"4",
         k2:"5",
-        k3:"6",
+        k3:6,
         k4:"7",
         k5:"8",
         k6:"9",
