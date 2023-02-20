@@ -82,7 +82,9 @@ def meterCounter(Map config = [:]) {
 		config.remove("endpoint");
 		config.remove("counter");
 		AttributesBuilder attr = Attributes.builder();
-		config.each{entry -> attr.put(AttributeKey.stringKey(entry.key), entry.value);}
+		for (entry in config) {
+			attr.put(entry.getKey(), entry.getValue());
+		}
 		otel.counter.add(1, attr.build());
 	}  finally {
 		otel.sdkMeterProvider.close();
