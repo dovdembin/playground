@@ -33,8 +33,6 @@ public class Otel {
 	LongCounter counter;
 	
 	def Otel(Map config = [:]){
-		 
-		
 		OtlpGrpcSpanExporter spanOtlpExporter = OtlpGrpcSpanExporter.builder()
 				.setEndpoint(config.endpoint)
 				.setTimeout(30, TimeUnit.SECONDS)
