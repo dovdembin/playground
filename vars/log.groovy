@@ -70,6 +70,6 @@ def meterCounter(Map config = [:]) {
 		attr.put(entry.getKey(), entry.getValue());
 	}
 	counter.add(1, attr.build());
-		
+	metricOtlpExporter.close();	
 	
 }
