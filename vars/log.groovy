@@ -26,29 +26,21 @@ import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 
 def meterCounter(Map config = [:]) {
-	OtlpGrpcSpanExporter spanOtlpExporter = OtlpGrpcSpanExporter.builder()
-				.setEndpoint(config.endpoint)
-				.setTimeout(30, TimeUnit.SECONDS)
-				.build();
+	
 		
+	Resource resource = Resource.getDefault()
+			.merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "otel-cli-java")));
+
 	OtlpGrpcMetricExporter metricOtlpExporter =	OtlpGrpcMetricExporter.builder()
 			.setEndpoint(config.endpoint)
 			.setTimeout(30, TimeUnit.SECONDS)
 			.build();
 	
-	Resource resource = Resource.getDefault()
-			.merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "otel-cli-java")));
-
-	SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-			.addSpanProcessor(BatchSpanProcessor.builder(spanOtlpExporter).build())
-			.setResource(resource).build();
-
 	SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
 			.registerMetricReader(PeriodicMetricReader.builder(metricOtlpExporter).build())
 			.setResource(resource).build();
 
 	OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
-			.setTracerProvider(sdkTracerProvider)
 			.setMeterProvider(sdkMeterProvider)
 			.setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
 			.buildAndRegisterGlobal();
