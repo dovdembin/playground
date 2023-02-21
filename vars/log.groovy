@@ -7,7 +7,6 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
 
-grape list
 
 import java.util.concurrent.TimeUnit;
 import io.opentelemetry.api.OpenTelemetry;
