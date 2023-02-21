@@ -69,7 +69,7 @@ def meterCounter(Map config = [:]) {
 	for (entry in config) {
 		attr.put(entry.getKey(), entry.getValue());
 	}
-	otel.counter.add(1, attr.build());
+	counter.add(1, attr.build());
 		
 	
 }
