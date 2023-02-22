@@ -34,14 +34,13 @@ def meterCounter(Map config = [:]) {
         Resource.getDefault()
             .merge(Resource.builder().put("dd", "OtlpExporterExample").build());
 
-
     OpenTelemetrySdk openTelemetrySdk =
         OpenTelemetrySdk.builder()
             .setMeterProvider(
                 SdkMeterProvider.builder()
                     .setResource(resource)
                     .registerMetricReader(
-                        PeriodicMetricReader.builder(OtlpGrpcMetricExporter.getDefault())
+                        PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().setEndpoint("http://localhost:4317").build())
                             .setInterval(Duration.ofMillis(1000))
                             .build())
                     .build())
