@@ -16,25 +16,24 @@ import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
-import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
 import io.opentelemetry.sdk.OpenTelemetrySdk;
 import io.opentelemetry.sdk.metrics.SdkMeterProvider;
 import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
 import io.opentelemetry.sdk.resources.Resource;
-import io.opentelemetry.sdk.trace.SdkTracerProvider;
-import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 
-def meterCounter(Map config = [:]) {
 
-	Resource resource = Resource.getDefault()
-			.merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "otel-cli-java")));
+
+def meterCounter(Map config = [:]) {
 
 	OtlpGrpcMetricExporter metricOtlpExporter =	OtlpGrpcMetricExporter.builder()
 			.setEndpoint(config.endpoint)
 			.setTimeout(30, TimeUnit.SECONDS)
 			.build();
-	
+
+	Resource resource = Resource.getDefault()
+			.merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "otel-cli-java")));
+
 	SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
 			.registerMetricReader(PeriodicMetricReader.builder(metricOtlpExporter).build())
 			.setResource(resource).build();
@@ -43,24 +42,20 @@ def meterCounter(Map config = [:]) {
 			.setMeterProvider(sdkMeterProvider)
 			.setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
 			.buildAndRegisterGlobal();
-	
+
 	Meter meter = openTelemetry.meterBuilder("instrumentation-library-name")
 			.setInstrumentationVersion("1.0.0")
 			.build();
 
 	LongCounter counter = meter
-				.counterBuilder(config.counter)
-				.setDescription(config.counter)
-				.setUnit("1")
-				.build();
-
-	config.remove("endpoint");
-	config.remove("counter");
+			.counterBuilder(config.counter)
+			.setDescription(config.counter)
+			.setUnit("1")
+			.build();
 	AttributesBuilder attr = Attributes.builder();
 	for (entry in config) {
-		attr.put(entry.getKey(), entry.getValue());
+		attr.put(entry.key, entry.value);
 	}
 	counter.add(1, attr.build());
-	metricOtlpExporter.close();	
-
+	sdkMeterProvider.close();
 }
