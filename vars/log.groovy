@@ -29,7 +29,7 @@ import java.time.Duration;
 
 
 def meterCounter(Map config = [:]) {
-
+	println env.OTEL_EXPORTER_OTLP_ENDPOINT
 	Resource resource =
         Resource.getDefault()
             .merge(Resource.builder().put("dd", "OtlpExporterExample").build());
