@@ -61,6 +61,5 @@ def meterCounter(Map config = [:]) {
 		attr.put(entry.key, entry.value);
 	}
 	counter.add(1, attr.build());
-	sdkMeterProvider.close();
 	openTelemetrySdk.getSdkMeterProvider().close();
 }
