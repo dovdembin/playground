@@ -1,5 +1,5 @@
 
-@Grab(group='io.grpc', module='grpc-stub', version='1.23.1')
+
 @Grab(group='io.opentelemetry', module='opentelemetry-bom', version='1.23.1', type='pom')
 @Grab(group='io.opentelemetry', module='opentelemetry-api', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.1')
