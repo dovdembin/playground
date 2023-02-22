@@ -1,4 +1,4 @@
-
+@Grab(group='io.grpc', module='grpc-stub', version='1.53.0')
 @Grab(group='io.opentelemetry', module='opentelemetry-bom', version='1.23.1', type='pom')
 @Grab(group='io.opentelemetry', module='opentelemetry-api', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.1')
@@ -25,7 +25,7 @@ import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import java.time.Duration;
-
+import io.grpc.ManagedChannel;
 
 
 def meterCounter(Map config = [:]) {
