@@ -26,8 +26,6 @@ import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 
 def meterCounter(Map config = [:]) {
-	
-	try {
 
 	Resource resource = Resource.getDefault()
 			.merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "otel-cli-java")));
@@ -64,11 +62,5 @@ def meterCounter(Map config = [:]) {
 	}
 	counter.add(1, attr.build());
 	metricOtlpExporter.close();	
-	
-	
-		System.out.println();
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+
 }
