@@ -4,7 +4,6 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
-@GrabConfig(systemClassLoader=true)
 @Grab(group='io.grpc', module='grpc-stub', version='1.53.0')
 
 import java.util.concurrent.TimeUnit;
