@@ -47,7 +47,7 @@ def meterCounter(Map config = [:]) {
                     .build())
             .buildAndRegisterGlobal();
 
-	Meter meter = openTelemetry.meterBuilder("instrumentation-library-name")
+	Meter meter = openTelemetrySdk.meterBuilder("instrumentation-library-name")
 			.setInstrumentationVersion("1.0.0")
 			.build();
 
