@@ -42,7 +42,6 @@ OtlpGrpcMetricExporter fdg = OtlpGrpcMetricExporter.builder().setEndpoint(config
                     .setResource(resource)
                     .registerMetricReader(
                         PeriodicMetricReader.builder(fdg)
-                            .setInterval(Duration.ofMillis(1000))
                             .build())
                     .build())
             .buildAndRegisterGlobal();
