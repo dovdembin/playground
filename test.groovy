@@ -4,8 +4,12 @@
 
  node {  
     stage('Build') { 
-        // sh(script: "java -jar otel.jar -e http://172.30.48.1:4317 -c tridevlab.test-counter", label: "verify_content.sh") 
         
+        // sh(script: "java -jar otel.jar -e http://172.30.48.1:4317 -c tridevlab.test-counter", label: "verify_content.sh") 
+        git 'https://github.com/dovdembin/otelcli.git'
+
+                // Run Maven on a Unix agent.
+        sh "mvn -Dmaven.test.failure.ignore=true clean package"
     }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
