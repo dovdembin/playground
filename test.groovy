@@ -31,7 +31,10 @@ def map = [
         "test.status":"44re"
         ]
     log.meterCounter(map);
+} catch (Exception e) {
+         
 }
+
 
 
     
