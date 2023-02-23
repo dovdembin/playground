@@ -13,7 +13,9 @@ tools {
         git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
                 // Run Maven on a Unix agent.
-        sh "mvn -Dmaven.test.failure.ignore=true clean package"
+        withMaven {
+            sh "mvn clean verify"
+        } // withMa
     }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
