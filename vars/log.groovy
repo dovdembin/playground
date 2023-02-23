@@ -4,7 +4,7 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
-
+@Grab(group='io.grpc', module='grpc-stub', version='1.52.0')
 
 import java.util.concurrent.TimeUnit;
 import io.opentelemetry.api.OpenTelemetry;
@@ -25,7 +25,7 @@ import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import java.time.Duration;
-
+import io.grpc.ManagedChannel;
 
 
 def meterCounter(Map config = [:]) {
@@ -42,6 +42,7 @@ OtlpGrpcMetricExporter fdg = OtlpGrpcMetricExporter.builder().setEndpoint(config
                     .setResource(resource)
                     .registerMetricReader(
                         PeriodicMetricReader.builder(fdg)
+                            .setInterval(Duration.ofMillis(1000))
                             .build())
                     .build())
             .buildAndRegisterGlobal();
