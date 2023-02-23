@@ -5,10 +5,12 @@
 stage("Running Stage: ") {
 
 
-
-    dir("utils") {
-        sh 'java -jar --counter="tridevlab.test-counter" --endpoint=env.OTEL_EXPORTER_OTLP_ENDPOINT -a "test.name"="aa"'
+dir("utils") {
+        sh 'echo ok'
     }
+    // dir("utils") {
+    //     sh 'java -jar --counter="tridevlab.test-counter" --endpoint=env.OTEL_EXPORTER_OTLP_ENDPOINT -a "test.name"="aa"'
+    // }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
     //     counter:"tridevlab.test-counter", 
