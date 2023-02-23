@@ -4,8 +4,9 @@
 
 try {
     def command='java -jar -e endpoint=env.OTEL_EXPORTER_OTLP_ENDPOINT -c counter:tridevlab.test-counter'
+    println command
     res = sh(script: command, returnStdout: true, label: "Run Dingo Completion Command").trim()
-    println res
+
 // def map = [
 //         endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
 //         counter:"tridevlab.test-counter", 
