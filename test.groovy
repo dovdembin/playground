@@ -2,7 +2,7 @@
  
 
 def countTestOTel() {
-    dir ("D://"){
+    dir ("utils"){
  // Execute your java file
  echo "koko"
  }
