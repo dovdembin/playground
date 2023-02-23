@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/dovdembin/otelcli.git'
+                git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
                 // Run Maven on a Unix agent.
                 sh "mvn -DskipTests=true clean package shade:shade"
