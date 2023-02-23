@@ -25,7 +25,7 @@ import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import java.time.Duration;
-import io.grpc.ManagedChannel;
+
 
 
 def meterCounter(Map config = [:]) {
