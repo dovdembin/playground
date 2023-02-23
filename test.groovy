@@ -3,7 +3,7 @@
  
 
 try {
-    def command="java -jar -e endpoint=${env.OTEL_EXPORTER_OTLP_ENDPOINT} -c counter:tridevlab.test-counter"
+    def command="java -jar -e ${env.OTEL_EXPORTER_OTLP_ENDPOINT} -c tridevlab.test-counter"
     println command
     res = sh(script: command, returnStdout: true, label: "Run Dingo Completion Command").trim()
 
