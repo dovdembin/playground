@@ -2,11 +2,13 @@
  
  
 
-try {
-    def command="java -jar otel.jar -e ${env.OTEL_EXPORTER_OTLP_ENDPOINT} -c tridevlab.test-counter"
-    println command
-    res = sh(script: command, returnStdout: true, label: "Run Dingo Completion Command").trim()
-
+ node {  
+    stage('Build') { 
+        sh(script: "echo koko", label: "verify_content.sh") 
+    }
+}
+     
+    java -version
 // def map = [
 //         endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
 //         counter:"tridevlab.test-counter", 
@@ -35,10 +37,7 @@ try {
 //         "test.status":"44re"
 //         ]
 //     log.meterCounter(map);
-} catch (Exception e) {
-         
-}
-
+ 
 
 
     
