@@ -13,7 +13,7 @@ pipeline {
                 git 'https://github.com/dovdembin/otelcli.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn -DskipTests=true  package"
+                sh "mvn -DskipTests=true clean package"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
