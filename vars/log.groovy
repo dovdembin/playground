@@ -4,7 +4,7 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
-@Grab(group='io.grpc', module='grpc-stub', version='1.53.0')
+
 
 import java.util.concurrent.TimeUnit;
 import io.opentelemetry.api.OpenTelemetry;
@@ -25,7 +25,7 @@ import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import java.time.Duration;
-import io.grpc.ManagedChannel;
+
 
 
 def meterCounter(Map config = [:]) {
@@ -34,13 +34,14 @@ def meterCounter(Map config = [:]) {
         Resource.getDefault()
             .merge(Resource.builder().put("dd", "OtlpExporterExample").build());
 
+OtlpGrpcMetricExporter fdg = OtlpGrpcMetricExporter.builder().setEndpoint(config.mendpoint)
     OpenTelemetrySdk openTelemetrySdk =
         OpenTelemetrySdk.builder()
             .setMeterProvider(
                 SdkMeterProvider.builder()
                     .setResource(resource)
                     .registerMetricReader(
-                        PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().setEndpoint(config.endpoint).build())
+                        PeriodicMetricReader.builder(fdg)
                             .setInterval(Duration.ofMillis(1000))
                             .build())
                     .build())
