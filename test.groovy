@@ -7,8 +7,7 @@
         sh(script: "echo koko", label: "verify_content.sh") 
     }
 }
-     
-    java -version
+
 // def map = [
 //         endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
 //         counter:"tridevlab.test-counter", 
