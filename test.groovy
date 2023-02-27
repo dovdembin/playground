@@ -37,12 +37,8 @@
 
 // @Library("shared-library") _
  
-node { 
-    tools {
-        // Install the Maven version configured as "M3" and add it to the path.
-        maven "M3"
-    } 
-    stage('Build') { 
+ 
+    
         
           
                 // Get some code from a GitHub repository
@@ -55,8 +51,8 @@ node {
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
                 sh 'java -jar target/otel-jar-with-dependencies.jar -e http://172.30.48.1:4317 -c tridevlab.test-counter'
              
-    }
-}
+   
+ 
 
 //  node {  
 //     stage('Build') { 
