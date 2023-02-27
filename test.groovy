@@ -47,7 +47,7 @@ node {
 
                 def mvnHome = tool name: 'M3', type: 'maven'
                 cmd="${mvnHome}/bin/mvn -B -DskipTests clean package shade:shade"
-                sh(script: cmd, returnStdout: false, label: "maven pachage")
+                str = sh(script: cmd, returnStdout: true, label: "maven pachage")
                 // Run Maven on a Unix agent.
                 // sh "mvn -DskipTests=true clean package shade:shade"
 
