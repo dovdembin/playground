@@ -46,7 +46,7 @@ node {
                 git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
                 def mvnHome = tool name: 'M3', type: 'maven'
-                sh "${mvnHome}/bin/mvn -B -DskipTests clean package"
+                sh "${mvnHome}/bin/mvn -B -DskipTests clean package shade:shade"
                 // Run Maven on a Unix agent.
                 // sh "mvn -DskipTests=true clean package shade:shade"
 
