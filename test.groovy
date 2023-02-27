@@ -49,7 +49,7 @@ node {
         // sh 'java -jar target/otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -c tridevlab.test-counter'
 
         // Get some code from a GitHub repository
-        git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
+        git branch: 'main', url: 'git@eos2git.cec.lab.emc.com:Test-and-Automation-Enablement/OtelCli.git'
 
         def mvnHome = tool name: 'M3', type: 'maven'
         cmd="${mvnHome}/bin/mvn -B -DskipTests=true clean package shade:shade"
