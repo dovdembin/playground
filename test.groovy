@@ -39,7 +39,7 @@
  
 node {  
     stage('Build') { 
-         steps {
+          
                 // Get some code from a GitHub repository
                 git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
@@ -49,7 +49,7 @@ node {
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
                 sh 'java -jar target/otel-jar-with-dependencies.jar -e http://172.30.48.1:4317 -c tridevlab.test-counter'
-            }
+             
     }
 }
 
