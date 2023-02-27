@@ -121,7 +121,7 @@ class OpenTelemetryConfiguration {
 		};
 
 		
-		properties.put("otel.java.disabled.resource.providers", "");
+		
 		return properties;
 	}
 
