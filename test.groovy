@@ -45,7 +45,7 @@ node {
                 // Get some code from a GitHub repository
                 git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
-                def mvnHome = tool name: 'Apache Maven 3.6.0', type: 'maven'
+                def mvnHome = tool name: 'M3', type: 'maven'
                 sh "${mvnHome}/bin/mvn -B -DskipTests clean package"
                 // Run Maven on a Unix agent.
                 // sh "mvn -DskipTests=true clean package shade:shade"
