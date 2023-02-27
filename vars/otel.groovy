@@ -27,35 +27,35 @@ import io.opentelemetry.sdk.resources.ResourceBuilder;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 
 
-public class OneRun {
 
-	public static void main(String[] args) {
-		Map<String, String> configurationProperties = new HashMap<>();
-		configurationProperties.put("bpt-trident", "1.0.0");
 
-		OpenTelemetryConfiguration openTelemetryConfiguration = new OpenTelemetryConfiguration(
-				"http://172.31.64.1:4317/", "",4444444,5555555,
-				"tridevlab", "", "", configurationProperties);
+public meterCounte() {
+	Map<String, String> configurationProperties = new HashMap<>();
+	configurationProperties.put("bpt-trident", "1.0.0");
 
-		OpenTelemetrySdkProvider openTelemetrySdkProvider = new OpenTelemetrySdkProvider();
-		openTelemetrySdkProvider.initialize(openTelemetryConfiguration);
+	OpenTelemetryConfiguration openTelemetryConfiguration = new OpenTelemetryConfiguration(
+			"http://172.31.64.1:4317/", "",4444444,5555555,
+			"tridevlab", "", "", configurationProperties);
 
-		
+	OpenTelemetrySdkProvider openTelemetrySdkProvider = new OpenTelemetrySdkProvider();
+	openTelemetrySdkProvider.initialize(openTelemetryConfiguration);
 
-		// Build counter e.g. LongCounter
-		LongCounter counter = openTelemetrySdkProvider.meter.counterBuilder("tridevlab.test-counter")
-				.setDescription("tridevlab.test-counter").setUnit("1").build();
+	
 
-		Attributes attributes = Attributes.of(AttributeKey.stringKey("Key"), "SomeWork", AttributeKey.stringKey("Key2"),
-				"SomeWork2", AttributeKey.stringKey("Key3"), "SomeWork3", AttributeKey.stringKey("Key4"), "SomeWork4");
+	// Build counter e.g. LongCounter
+	LongCounter counter = openTelemetrySdkProvider.meter.counterBuilder("tridevlab.test-counter")
+			.setDescription("tridevlab.test-counter").setUnit("1").build();
 
-		counter.add(1, attributes);
+	Attributes attributes = Attributes.of(AttributeKey.stringKey("Key"), "SomeWork", AttributeKey.stringKey("Key2"),
+			"SomeWork2", AttributeKey.stringKey("Key3"), "SomeWork3", AttributeKey.stringKey("Key4"), "SomeWork4");
 
-		openTelemetrySdkProvider.shutdown();
+	counter.add(1, attributes);
 
-	}
+	openTelemetrySdkProvider.shutdown();
 
 }
+
+
 
 class OpenTelemetryConfiguration {
 
