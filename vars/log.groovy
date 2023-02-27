@@ -4,8 +4,7 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
-@Grab(group='io.opentelemetry', module='opentelemetry-sdk-extension-autoconfigure', version='1.23.1-alpha')
-@Grab(group='io.opentelemetry', module='opentelemetry-sdk-extension-autoconfigure-spi', version='1.23.1')
+
 
 import java.util.concurrent.TimeUnit;
 import io.opentelemetry.api.OpenTelemetry;
@@ -18,8 +17,6 @@ import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
 import io.opentelemetry.sdk.OpenTelemetrySdk;
 import io.opentelemetry.sdk.metrics.SdkMeterProvider;
-import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
-import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdkBuilder;
 import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
 import io.opentelemetry.sdk.resources.Resource;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
@@ -33,9 +30,6 @@ import java.time.Duration;
 
 def meterCounter(Map config = [:]) {
 	println env.OTEL_EXPORTER_OTLP_ENDPOINT
-
-	AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
-
 	Resource resource =
         Resource.getDefault()
             .merge(Resource.builder().put("dd", "OtlpExporterExample").build());
