@@ -29,7 +29,7 @@ import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 
 
 
-def  meterCounte(Map config = [:]) {
+def meterCounter(Map config = [:]) {
 	Map<String, String> configurationProperties = new HashMap<>();
 	configurationProperties.put("bpt-trident", "1.0.0");
 
