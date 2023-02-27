@@ -135,7 +135,7 @@ class OpenTelemetryConfiguration {
 
 class OpenTelemetrySdkProvider {
 
-	public static final String DEFAULT_OTEL_JAVA_DISABLED_RESOURCE_PROVIDERS = ProcessResourceProvider.class.getName();
+	 
 
 	public OpenTelemetry openTelemetry;
 	public OpenTelemetrySdk openTelemetrySdk;
