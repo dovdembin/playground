@@ -31,27 +31,27 @@ import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 @NonCPS
 def meterCounter(Map config = [:]) {
 	Map<String, String> configurationProperties = new HashMap<>();
-	configurationProperties.put("bpt-trident", "1.0.0");
+		configurationProperties.put("bpt-trident", "1.0.0");
 
-	OpenTelemetryConfiguration openTelemetryConfiguration = new OpenTelemetryConfiguration(
-			"http://172.31.64.1:4317/", "",4444444,5555555,
-			"tridevlab", "", "", configurationProperties);
+		OpenTelemetryConfiguration openTelemetryConfiguration = new OpenTelemetryConfiguration(
+				Optional.of("http://172.31.64.1:4317/"), Optional.empty(), Optional.empty(), Optional.empty(),
+				Optional.ofNullable("tridevlab"), Optional.ofNullable(""), Optional.empty(), configurationProperties);
 
-	OpenTelemetrySdkProvider openTelemetrySdkProvider = new OpenTelemetrySdkProvider();
-	openTelemetrySdkProvider.initialize(openTelemetryConfiguration);
+		OpenTelemetrySdkProvider openTelemetrySdkProvider = new OpenTelemetrySdkProvider();
+		openTelemetrySdkProvider.initialize(openTelemetryConfiguration);
 
-	
+		
 
-	// Build counter e.g. LongCounter
-	LongCounter counter = openTelemetrySdkProvider.meter.counterBuilder("tridevlab.test-counter")
-			.setDescription("tridevlab.test-counter").setUnit("1").build();
+		// Build counter e.g. LongCounter
+		LongCounter counter = openTelemetrySdkProvider.meter.counterBuilder("tridevlab.test-counter")
+				.setDescription("tridevlab.test-counter").setUnit("1").build();
 
-	Attributes attributes = Attributes.of(AttributeKey.stringKey("Key"), "SomeWork", AttributeKey.stringKey("Key2"),
-			"SomeWork2", AttributeKey.stringKey("Key3"), "SomeWork3", AttributeKey.stringKey("Key4"), "SomeWork4");
+		Attributes attributes = Attributes.of(AttributeKey.stringKey("Key"), "SomeWork", AttributeKey.stringKey("Key2"),
+				"SomeWork2", AttributeKey.stringKey("Key3"), "SomeWork3", AttributeKey.stringKey("Key4"), "SomeWork4");
 
-	counter.add(1, attributes);
+		counter.add(1, attributes);
 
-	openTelemetrySdkProvider.shutdown();
+		openTelemetrySdkProvider.shutdown();
 
 }
 
@@ -59,18 +59,19 @@ def meterCounter(Map config = [:]) {
 
 class OpenTelemetryConfiguration {
 
-	private String endpoint;
-	private final String trustedCertificatesPem;
-	private final Integer exporterTimeoutMillis;
-	private final Integer exporterIntervalMillis;
-	private final String serviceName;
-	private final String serviceNamespace;
-	private final String disabledResourceProviders;
+	private final Optional<String> endpoint;
+	private final Optional<String> trustedCertificatesPem;
+	private final Optional<Integer> exporterTimeoutMillis;
+	private final Optional<Integer> exporterIntervalMillis;
+	private final Optional<String> serviceName;
+	private final Optional<String> serviceNamespace;
+	private final Optional<String> disabledResourceProviders;
 	private final Map<String, String> configurationProperties;
 
-	public OpenTelemetryConfiguration(
-		String endpoint, String trustedCertificatesPem, Integer exporterTimeoutMillis, Integer exporterIntervalMillis,
-		String serviceName, String serviceNamespace, String disabledResourceProviders, Map<String, String> configurationProperties) {
+	public OpenTelemetryConfiguration(Optional<String> endpoint, Optional<String> trustedCertificatesPem,
+			Optional<Integer> exporterTimeoutMillis, Optional<Integer> exporterIntervalMillis,
+			Optional<String> serviceName, Optional<String> serviceNamespace, Optional<String> disabledResourceProviders,
+			Map<String, String> configurationProperties) {
 		this.endpoint = endpoint;
 		this.trustedCertificatesPem = trustedCertificatesPem;
 		this.exporterTimeoutMillis = exporterTimeoutMillis;
@@ -113,19 +114,31 @@ class OpenTelemetryConfiguration {
 		Map<String, String> properties = new HashMap<>();
 		properties.putAll(this.configurationProperties);
 
-	 
-			 
-			properties.put("otel.exporter.otlp.endpoint", this.endpoint);
-	 
+		this.getEndpoint().ifPresent(endpoint -> {
+			properties.compute("otel.traces.exporter", (key, oldValue) -> oldValue == null ? "otlp"
+					: oldValue.contains("otlp") ? oldValue : oldValue.concat(",otlp"));
+			properties.compute("otel.metrics.exporter", (key, oldValue) -> oldValue == null ? "otlp"
+					: oldValue.contains("otlp") ? oldValue : oldValue.concat(",otlp"));
+			properties.put("otel.exporter.otlp.endpoint", endpoint);
+		});
 
-		
+		this.getTrustedCertificatesPem().ifPresent(
+				trustedCertificatesPem -> properties.put("otel.exporter.otlp.certificate", trustedCertificatesPem));
+		this.getExporterTimeoutMillis().map(Object::toString).ifPresent(
+				exporterTimeoutMillis -> properties.put("otel.exporter.otlp.timeout", exporterTimeoutMillis));
+		this.getExporterIntervalMillis().map(Object::toString).ifPresent(
+				exporterIntervalMillis -> properties.put("otel.imr.export.interval", exporterIntervalMillis));
+		this.getDisabledResourceProviders().ifPresent(disabledResourceProviders -> properties
+				.put("otel.java.disabled.resource.providers", disabledResourceProviders));
 		return properties;
 	}
 
 	public Resource toOpenTelemetryResource() {
 		ResourceBuilder resourceBuilder = Resource.builder();
-		resourceBuilder.put("", "");
-		resourceBuilder.put("", "");
+		this.getServiceName()
+				.ifPresent(serviceName -> resourceBuilder.put(ResourceAttributes.SERVICE_NAME, serviceName));
+		this.getServiceNamespace().ifPresent(
+				serviceNamespace -> resourceBuilder.put(ResourceAttributes.SERVICE_NAMESPACE, serviceNamespace));
 		resourceBuilder.put("bpt", "1.0.0");
 		return resourceBuilder.build();
 	}
@@ -134,7 +147,7 @@ class OpenTelemetryConfiguration {
 
 class OpenTelemetrySdkProvider {
 
-	 
+	public static final String DEFAULT_OTEL_JAVA_DISABLED_RESOURCE_PROVIDERS = ProcessResourceProvider.class.getName();
 
 	public OpenTelemetry openTelemetry;
 	public OpenTelemetrySdk openTelemetrySdk;
@@ -189,18 +202,20 @@ class OpenTelemetrySdkProvider {
 
 	public void initializeOtlp(OpenTelemetryConfiguration configuration) {
 
-		AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
+		AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder().registerShutdownHook(false);
 		// PROPERTIES
-		sdkBuilder.addPropertiesSupplier{s -> configuration.toOpenTelemetryProperties()};
+		sdkBuilder.addPropertiesSupplier(() -> configuration.toOpenTelemetryProperties());
 
 		// RESOURCE
-		sdkBuilder.addResourceCustomizer{resource, configProperties -> 
+		sdkBuilder.addResourceCustomizer((resource, configProperties) -> {
 			ResourceBuilder resourceBuilder = Resource.builder().putAll(resource)
 					.putAll(configuration.toOpenTelemetryResource());
 			return resourceBuilder.build();
-		};
+		});
 
-		
+		sdkBuilder.registerShutdownHook(false) // SDK closed by
+												// io.jenkins.plugins.opentelemetry.OpenTelemetrySdkProvider.preDestroy()
+				.setResultAsGlobal(true); // ensure GlobalOpenTelemetry.set() is invoked
 		AutoConfiguredOpenTelemetrySdk autoConfiguredOpenTelemetrySdk = sdkBuilder.build();
 		this.openTelemetrySdk = autoConfiguredOpenTelemetrySdk.getOpenTelemetrySdk();
 		this.resource = autoConfiguredOpenTelemetrySdk.getResource();
