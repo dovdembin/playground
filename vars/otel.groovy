@@ -56,7 +56,7 @@ def meterCounter(Map config = [:]) {
 }
 
 
-
+@NonCPS
 class OpenTelemetryConfiguration {
 
 	private final Optional<String> endpoint;
@@ -133,6 +133,7 @@ class OpenTelemetryConfiguration {
 
 }
 
+@NonCPS
 class OpenTelemetrySdkProvider {
 
 	 
