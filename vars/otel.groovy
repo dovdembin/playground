@@ -17,7 +17,7 @@ import io.opentelemetry.api.common.Attributes;
 
 import io.opentelemetry.api.metrics.LongCounter;
 import io.opentelemetry.api.metrics.Meter;
-import io.opentelemetry.instrumentation.resources.ProcessResourceProvider;
+ 
 import io.opentelemetry.sdk.OpenTelemetrySdk;
 import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
 import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdkBuilder;
@@ -134,7 +134,7 @@ class OpenTelemetryConfiguration {
 
 class OpenTelemetrySdkProvider {
 
-	public static final String DEFAULT_OTEL_JAVA_DISABLED_RESOURCE_PROVIDERS = ProcessResourceProvider.class.getName();
+	 
 
 	public OpenTelemetry openTelemetry;
 	public OpenTelemetrySdk openTelemetrySdk;
