@@ -195,15 +195,13 @@ class OpenTelemetrySdkProvider {
 		// sdkBuilder.addPropertiesSupplier{s -> configuration.toOpenTelemetryProperties()};
 
 		// RESOURCE
-		sdkBuilder.addResourceCustomizer{resource, configProperties -> 
-			ResourceBuilder resourceBuilder = Resource.builder().putAll(resource)
-					.putAll(configuration.toOpenTelemetryResource());
-			return resourceBuilder.build();
-		};
+		// sdkBuilder.addResourceCustomizer{resource, configProperties -> 
+		// 	ResourceBuilder resourceBuilder = Resource.builder().putAll(resource)
+		// 			.putAll(configuration.toOpenTelemetryResource());
+		// 	return resourceBuilder.build();
+		// };
 
-		sdkBuilder.registerShutdownHook(false) // SDK closed by
-												// io.jenkins.plugins.opentelemetry.OpenTelemetrySdkProvider.preDestroy()
-				.setResultAsGlobal(true); // ensure GlobalOpenTelemetry.set() is invoked
+		
 		AutoConfiguredOpenTelemetrySdk autoConfiguredOpenTelemetrySdk = sdkBuilder.build();
 		this.openTelemetrySdk = autoConfiguredOpenTelemetrySdk.getOpenTelemetrySdk();
 		this.resource = autoConfiguredOpenTelemetrySdk.getResource();
