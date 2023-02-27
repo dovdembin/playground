@@ -41,19 +41,25 @@ node {
     
     stage('Build') { 
         
-          
-                // Get some code from a GitHub repository
-                git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
+        // git branch: 'main', url: 'git@eos2git.cec.lab.emc.com:Test-and-Automation-Enablement/OtelCli.git'
+        // cmd="/usr/local/maven/bin/mvn -B -DskipTests=true clean package shade:shade"
+        // println "${OTEL_EXPORTER_OTLP_ENDPOINT}"
+        // str = sh(script: cmd, returnStdout: true, label: "building otel")
+        // print str
+        // sh 'java -jar target/otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -c tridevlab.test-counter'
 
-                def mvnHome = tool name: 'M3', type: 'maven'
-                cmd="${mvnHome}/bin/mvn -B -DskipTests=true clean package shade:shade"
-                str = sh(script: cmd, returnStdout: true, label: "maven pachage")
-                // Run Maven on a Unix agent.
-                // sh "mvn -DskipTests=true clean package shade:shade"
+        // Get some code from a GitHub repository
+        git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
-                sh "java -jar target/otel-jar-with-dependencies.jar -e ${env.OTEL_EXPORTER_OTLP_ENDPOINT} -c tridevlab.test-counter"
+        def mvnHome = tool name: 'M3', type: 'maven'
+        cmd="${mvnHome}/bin/mvn -B -DskipTests=true clean package shade:shade"
+        str = sh(script: cmd, returnStdout: true, label: "maven pachage")
+        // Run Maven on a Unix agent.
+        // sh "mvn -DskipTests=true clean package shade:shade"
+
+        // To run Maven on a Windows agent, use
+        // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+        sh "java -jar target/otel-jar-with-dependencies.jar -e ${env.OTEL_EXPORTER_OTLP_ENDPOINT} -c tridevlab.test-counter"
              
     }
 }
