@@ -191,7 +191,9 @@ class OpenTelemetrySdkProvider {
 	public void initializeOtlp(OpenTelemetryConfiguration configuration) {
 
 		AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
-		sdkBuilder.addPropertiesSupplier(configuration);
+		Map<String, String> properties = new HashMap<>();
+		properties.put("otel.traces.exporter", "otlp");
+		sdkBuilder.addPropertiesSupplier(properties);
 		// PROPERTIES
 		// sdkBuilder.addPropertiesSupplier{s -> configuration.toOpenTelemetryProperties()};
 
