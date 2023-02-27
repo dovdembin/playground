@@ -192,7 +192,7 @@ class OpenTelemetrySdkProvider {
 
 		AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
 		// PROPERTIES
-		sdkBuilder.addPropertiesSupplier{s -> configuration.toOpenTelemetryProperties()};
+		// sdkBuilder.addPropertiesSupplier{s -> configuration.toOpenTelemetryProperties()};
 
 		// RESOURCE
 		sdkBuilder.addResourceCustomizer{resource, configProperties -> 
