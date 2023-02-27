@@ -127,8 +127,6 @@ class OpenTelemetryConfiguration {
 
 	public Resource toOpenTelemetryResource() {
 		ResourceBuilder resourceBuilder = Resource.builder();
-		resourceBuilder.put("", ""));
-		resourceBuilder.put("", ""));
 		resourceBuilder.put("bpt", "1.0.0");
 		return resourceBuilder.build();
 	}
