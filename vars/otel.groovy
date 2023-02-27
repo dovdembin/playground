@@ -56,7 +56,7 @@ def meterCounter(Map config = [:]) {
 }
 
 
-@NonCPS
+
 class OpenTelemetryConfiguration {
 
 	private final Optional<String> endpoint;
@@ -133,7 +133,6 @@ class OpenTelemetryConfiguration {
 
 }
 
-@NonCPS
 class OpenTelemetrySdkProvider {
 
 	 
@@ -191,7 +190,7 @@ class OpenTelemetrySdkProvider {
 
 	public void initializeOtlp(OpenTelemetryConfiguration configuration) {
 
-		AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder().registerShutdownHook(false);
+		AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
 		// PROPERTIES
 		sdkBuilder.addPropertiesSupplier{s -> configuration.toOpenTelemetryProperties()};
 
