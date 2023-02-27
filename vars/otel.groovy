@@ -191,6 +191,7 @@ class OpenTelemetrySdkProvider {
 	public void initializeOtlp(OpenTelemetryConfiguration configuration) {
 
 		AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
+		sdkBuilder.addPropertiesSupplier(configuration);
 		// PROPERTIES
 		// sdkBuilder.addPropertiesSupplier{s -> configuration.toOpenTelemetryProperties()};
 
