@@ -35,9 +35,23 @@
 
 
 
-@Library("shared-library") _
+// @Library("shared-library") _
  
+node {  
+    stage('Build') { 
+         steps {
+                // Get some code from a GitHub repository
+                git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
+                // Run Maven on a Unix agent.
+                sh "mvn -DskipTests=true clean package shade:shade"
+
+                // To run Maven on a Windows agent, use
+                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh 'java -jar target/otel-jar-with-dependencies.jar -e http://172.30.48.1:4317 -c tridevlab.test-counter'
+            }
+    }
+}
 
 //  node {  
 //     stage('Build') { 
@@ -50,34 +64,34 @@
 //             sh "mvn clean verify"
 //         } // withMa
 //     }
-    def map = [
-        endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
-        counter:"tridevlab.test-counter", 
-        "test.name":"aa", 
-        "test.bpt-suite":"bb",
-        "test.bpt-merge-candidate":"cc",
-        "test.duration":3456,
-        "test.source":"ee",
-        "test.agent-name":"moshe",
-        "test.ibid":"ff",
-        "test.program-branch":"gg",
-        "test.flavor":"hh",
-        "test.github.pr.id":"ii",
-        "test.github.pr.url":"jj",
-        "test.github.pr.author.login":"kk",
-        "test.github.pr.author.email":"ll",
-        "test.github.source-branch":"mm",
-        "test.github.target-branch":"nn",
-        "test.package-url":"oo",
-        "test.slave-name":"oo",
-        "test.jenkins.build-number":16,
-        "test.jenkins.build-url":"gdg",
-        "test.dingo.unique-id":"eee",
-        "test.sequential.appliance":"ttt",
-        "test.cyc-test":"r5",
-        "test.status":"44re"
-        ]
-    otel.meterCounter(map);
+    // def map = [
+    //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
+    //     counter:"tridevlab.test-counter", 
+    //     "test.name":"aa", 
+    //     "test.bpt-suite":"bb",
+    //     "test.bpt-merge-candidate":"cc",
+    //     "test.duration":3456,
+    //     "test.source":"ee",
+    //     "test.agent-name":"moshe",
+    //     "test.ibid":"ff",
+    //     "test.program-branch":"gg",
+    //     "test.flavor":"hh",
+    //     "test.github.pr.id":"ii",
+    //     "test.github.pr.url":"jj",
+    //     "test.github.pr.author.login":"kk",
+    //     "test.github.pr.author.email":"ll",
+    //     "test.github.source-branch":"mm",
+    //     "test.github.target-branch":"nn",
+    //     "test.package-url":"oo",
+    //     "test.slave-name":"oo",
+    //     "test.jenkins.build-number":16,
+    //     "test.jenkins.build-url":"gdg",
+    //     "test.dingo.unique-id":"eee",
+    //     "test.sequential.appliance":"ttt",
+    //     "test.cyc-test":"r5",
+    //     "test.status":"44re"
+    //     ]
+    // log.meterCounter(map);
 // }
 
 
