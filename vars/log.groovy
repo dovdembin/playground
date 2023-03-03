@@ -6,8 +6,6 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
 
 
-import java.util.concurrent.TimeUnit;
-import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.common.AttributesBuilder
 import io.opentelemetry.api.metrics.LongCounter;
@@ -29,7 +27,6 @@ import java.time.Duration;
 
 
 def meterCounter(Map config = [:]) {
-	println env.OTEL_EXPORTER_OTLP_ENDPOINT
 	Resource resource =
         Resource.getDefault()
             .merge(Resource.builder().put("dd", "OtlpExporterExample").build());
