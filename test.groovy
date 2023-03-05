@@ -74,7 +74,7 @@
         // withMaven {
         //     sh "mvn clean verify"
         // } // withMa
-        sh 'curl -O "http://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/testsign/otel-jar-with-dependencies.jar"'s
+        sh 'curl -O "http://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/testsign/otel-jar-with-dependencies.jar"'
     }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
