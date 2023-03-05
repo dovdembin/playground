@@ -35,7 +35,7 @@ import io.opentelemetry.api.metrics.LongCounter;
 import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.api.common.AttributesBuilder;
 
-@NonCPS
+d
 def meterCounter(Map config = [:]) {
 	println config.endpoint
 	Resource resource = Resource.getDefault()
