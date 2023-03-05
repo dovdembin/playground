@@ -74,10 +74,10 @@
         // withMaven {
         //     sh "mvn clean verify"
         // } // withMa
-        println "${JENKINS_HOME}/builds/${BUILD_NUMBER}/archive/target/"
+        println "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"
         sh 'curl -O "http://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/otel-jar-with-dependencies.jar"'
         sh """
-            java -jar ${JENKINS_HOME}/builds/${BUILD_NUMBER}/archive/target/otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
+            java -jar ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
             -a test.name="dsds" \
             -a test.bpt-suite="q" \
             -a test.bpt-merge-candidate="w" \
