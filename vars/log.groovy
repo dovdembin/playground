@@ -27,9 +27,10 @@ import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.api.common.AttributesBuilder;
 
 def meterCounter(Map config = [:]) {
-GroovyClassLoader gos = new GroovyClassLoader();
 
-gos.loadClass("className");
+// GroovyClassLoader gos = new GroovyClassLoader();
+// gos.loadClass("className");
+
 	try {
 	Resource resource = Resource.getDefault()
   .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "logical-service-name")));
