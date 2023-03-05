@@ -79,32 +79,32 @@
         sh 'curl -O "http://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/otel-jar-with-dependencies.jar"'
         dir("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"){
             sh 'ls'
-        sh """
-            java -jar ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
-            -a test.name="dsds" \
-            -a test.bpt-suite="q" \
-            -a test.bpt-merge-candidate="w" \
-            -i test.duration=6 \
-            -a test.source="r" \
-            -a test.agent-name="t" \
-            -a test.ibid="y" \
-            -a test.program-branch="u" \
-            -a test.flavor="i" \
-            -a test.github.pr.id="o" \
-            -a test.github.pr.url="p" \
-            -a test.github.pr.author.login="a" \
-            -a test.github.pr.author.email="s" \
-            -a test.github.source-branch="x" \
-            -a test.github.target-branch="c" \
-            -a test.package-url="v" \
-            -a test.slave-name="b" \
-            -i test.jenkins.build-number=7 \
-            -a test.jenkins.build-url="m" \
-            -a test.dingo.unique-id="rt" \
-            -a test.sequential.appliance="yhn" \
-            -a test.cyc-test="cvb" \
-            -a test.status=bhu""
-        """
+            sh """
+                java -jar ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
+                -a test.name="dsds" \
+                -a test.bpt-suite="q" \
+                -a test.bpt-merge-candidate="w" \
+                -i test.duration=6 \
+                -a test.source="r" \
+                -a test.agent-name="t" \
+                -a test.ibid="y" \
+                -a test.program-branch="u" \
+                -a test.flavor="i" \
+                -a test.github.pr.id="o" \
+                -a test.github.pr.url="p" \
+                -a test.github.pr.author.login="a" \
+                -a test.github.pr.author.email="s" \
+                -a test.github.source-branch="x" \
+                -a test.github.target-branch="c" \
+                -a test.package-url="v" \
+                -a test.slave-name="b" \
+                -i test.jenkins.build-number=7 \
+                -a test.jenkins.build-url="m" \
+                -a test.dingo.unique-id="rt" \
+                -a test.sequential.appliance="yhn" \
+                -a test.cyc-test="cvb" \
+                -a test.status=bhu""
+            """
     }
         }
     // def map = [
