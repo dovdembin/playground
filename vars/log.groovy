@@ -35,7 +35,7 @@ def meterCounter(Map config = [:]) {
 
 
 SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-  .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().setEndpoint(config.endpoint).build()).build())
+  .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().setEndpoint("https://localhost4317").build()).build())
   .setResource(resource)
   .build();
 
