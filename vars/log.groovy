@@ -20,6 +20,7 @@ import java.time.Duration;
 
 
 def meterCounter(Map config = [:]) {
+	println config.endpoint
 	Resource resource =
         Resource.getDefault()
             .merge(Resource.builder().put("dd", "OtlpExporterExample").build());
