@@ -81,29 +81,29 @@
             sh 'ls'
             sh """
                 java -jar otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
-                -a test.name="dsds" \
-                -a test.bpt-suite="q" \
-                -a test.bpt-merge-candidate="w" \
-                -i test.duration=6 \
-                -a test.source="r" \
-                -a test.agent-name="t" \
-                -a test.ibid="y" \
-                -a test.program-branch="u" \
-                -a test.flavor="i" \
-                -a test.github.pr.id="o" \
-                -a test.github.pr.url="p" \
-                -a test.github.pr.author.login="a" \
-                -a test.github.pr.author.email="s" \
-                -a test.github.source-branch="x" \
-                -a test.github.target-branch="c" \
-                -a test.package-url="v" \
-                -a test.slave-name="b" \
-                -i test.jenkins.build-number=7 \
-                -a test.jenkins.build-url="m" \
-                -a test.dingo.unique-id="rt" \
-                -a test.sequential.appliance="yhn" \
-                -a test.cyc-test="cvb" \
-                -a test.status=bhu""
+                -a test.name="${config_base_name}" \
+                -a test.bpt-suite="${main_envs["bpt_suite"]}" \
+                -a test.bpt-merge-candidate="${main_envs["bpt_merge_candidate"]}" \
+                -i test.duration="${duration}" \
+                -a test.source="${TRIGGERED_BY}" \
+                -a test.agent-name="${env.HOST_NAME}" \
+                -a test.ibid="${IBID}" \
+                -a test.program-branch="${PROGRAM_BRANCH}" \
+                -a test.flavor="${FLAVOR}" \
+                -a test.github.pr.id="${GIT_PR_ID}" \
+                -a test.github.pr.url="${GIT_PR_LINK}" \
+                -a test.github.pr.author.login="${GIT_PR_AUTHOR_LOGIN}" \
+                -a test.github.pr.author.email="${GIT_PR_AUTHOR_EMAIL}" \
+                -a test.github.source-branch="${GIT_PR_SOURCE_BRANCH}" \
+                -a test.github.target-branch="${GIT_PR_TARGET_BRANCH}" \
+                -a test.package-url="${PACKAGE_URL}" \
+                -a test.slave-name="${slave_name}" \
+                -i test.jenkins.build-number="${BUILD_NUMBER}" \
+                -a test.jenkins.build-url="${BUILD_URL}" \
+                -a test.dingo.unique-id="${UNIQUE_ID}" \
+                -a test.sequential.appliance="${SEQUENTIAL_APPLIANCE}" \
+                -a test.cyc-test="${CYC_TEST}" \
+                -a test.status=${end_status}""
             """
     }
         }
