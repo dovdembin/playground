@@ -74,7 +74,7 @@
         // withMaven {
         //     sh "mvn clean verify"
         // } // withMa
-        script {
+        // script {
             // if(fileExists('src/maerin')) {
             //     echo 'ok'
             // } else {
@@ -82,7 +82,7 @@
             // }
             println pwd
             println ls
-        }
+        // }
         println "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"
         sh 'curl -O "http://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/otel-jar-with-dependencies.jar"'
         sh """
