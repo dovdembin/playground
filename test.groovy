@@ -102,6 +102,7 @@
         "test.cyc-test":"r5",
         "test.status":"44re"
         ]
+        println env.OTEL_EXPORTER_OTLP_ENDPOINT
     log.meterCounter(map);
 }
 
