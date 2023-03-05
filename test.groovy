@@ -80,7 +80,7 @@
             -a test.name="dsds" \
             -a test.bpt-suite="q" \
             -a test.bpt-merge-candidate="w" \
-            -i test.duration="e" \
+            -i test.duration=6 \
             -a test.source="r" \
             -a test.agent-name="t" \
             -a test.ibid="y" \
@@ -94,7 +94,7 @@
             -a test.github.target-branch="c" \
             -a test.package-url="v" \
             -a test.slave-name="b" \
-            -i test.jenkins.build-number="n" \
+            -i test.jenkins.build-number=7 \
             -a test.jenkins.build-url="m" \
             -a test.dingo.unique-id="rt" \
             -a test.sequential.appliance="yhn" \
