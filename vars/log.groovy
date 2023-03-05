@@ -5,6 +5,11 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
 @Grab(group='io.grpc', module='grpc-protobuf', version='1.53.0')
+@Grab(group='io.grpc', module='grpc-netty', version='1.53.0')
+@Grab(group='io.grpc', module='grpc-api', version='1.53.0')
+@Grab(group='io.grpc', module='grpc-netty-shaded', version='1.53.0')
+@Grab(group='io.grpc', module='grpc-core', version='1.53.0')
+@Grab(group='io.grpc', module='grpc-protobuf-lite', version='1.53.0')
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
