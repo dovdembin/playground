@@ -74,7 +74,7 @@
         // withMaven {
         //     sh "mvn clean verify"
         // } // withMa
-        println "${BUILD_URL}"
+        sh 'ls'
         sh 'curl -O "http://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/otel-jar-with-dependencies.jar"'
         sh """
             java -jar otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
