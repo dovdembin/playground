@@ -74,7 +74,7 @@
         // withMaven {
         //     sh "mvn clean verify"
         // } // withMa
-        sh 'curl -O "http://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/testsign/otel-jar-with-dependencies.jar"'
+        sh 'curl -O "http://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/otel-jar-with-dependencies.jar"'
         sh """
             java -jar target/otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
             -a test.name="dsds" \
