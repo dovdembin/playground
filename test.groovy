@@ -68,12 +68,12 @@
     stage('Build') { 
         
         // sh(script: "java -jar otel.jar -e http://172.30.48.1:4317 -c tridevlab.test-counter", label: "verify_content.sh") 
-        git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
+        // git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
                 // Run Maven on a Unix agent.
-        withMaven {
-            sh "mvn clean verify"
-        } // withMa
+        // withMaven {
+        //     sh "mvn clean verify"
+        // } // withMa
     }
     def map = [
         endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
