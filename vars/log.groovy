@@ -4,13 +4,23 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-exporter-otlp', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
+@GrabConfig(systemClassLoader=true)
 @Grab(group='io.grpc', module='grpc-protobuf', version='1.53.0')
-@Grab(group='io.grpc', module='grpc-netty', version='1.53.0')
-@Grab(group='io.grpc', module='grpc-api', version='1.53.0')
+@GrabConfig(systemClassLoader=true)
+@Grab(group='io.grpc', module='grpc-stub', version='1.53.0')
+@GrabConfig(systemClassLoader=true)
 @Grab(group='io.grpc', module='grpc-netty-shaded', version='1.53.0')
-@Grab(group='io.grpc', module='grpc-core', version='1.53.0')
-@Grab(group='io.grpc', module='grpc-protobuf-lite', version='1.53.0')
 
+import io.grpc.CallOptions;
+import io.grpc.Channel;
+import io.grpc.ClientCall;
+import io.grpc.ClientInterceptor;
+import io.grpc.ForwardingClientCall;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import io.grpc.Metadata;
+import io.grpc.MethodDescriptor;
+import io.grpc.StatusRuntimeException;
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
@@ -28,6 +38,7 @@ import io.opentelemetry.api.metrics.LongCounter;
 import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.api.common.AttributesBuilder;
 
+@NonCPS
 def meterCounter(Map config = [:]) {
 	println config.endpoint
 	Resource resource = Resource.getDefault()
@@ -41,7 +52,7 @@ SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
   .build();
 
 OpenTelemetrySdk openTelemetrySdk = OpenTelemetrySdk.builder()
-  
+
   .setMeterProvider(sdkMeterProvider)
   .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
   .buildAndRegisterGlobal();
