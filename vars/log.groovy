@@ -33,7 +33,7 @@ SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
   .setResource(resource)
   .build();
 
-OpenTelemetrySdk openTelemetry = OpenTelemetrySdk.builder()
+OpenTelemetrySdk openTelemetrySdk = OpenTelemetrySdk.builder()
   
   .setMeterProvider(sdkMeterProvider)
   .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
