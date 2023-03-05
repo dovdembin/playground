@@ -21,6 +21,7 @@ import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 import io.opentelemetry.api.metrics.LongCounter;
 import io.opentelemetry.api.metrics.Meter;
+import io.opentelemetry.api.common.AttributesBuilder;
 
 def meterCounter(Map config = [:]) {
 	println config.endpoint
