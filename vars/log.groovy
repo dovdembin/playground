@@ -1,5 +1,5 @@
 
-@Grapes([
+
 @Grab(group='io.opentelemetry', module='opentelemetry-bom', version='1.23.1', type='pom')
 @Grab(group='io.opentelemetry', module='opentelemetry-api', version='1.23.1')
 @Grab(group='io.opentelemetry', module='opentelemetry-sdk', version='1.23.1')
@@ -7,7 +7,7 @@
 @Grab(group='io.opentelemetry', module='opentelemetry-semconv', version='1.23.1-alpha', scope='runtime')
 @Grab(group='io.grpc', module='grpc-bom', version='1.53.0', type='pom')
 @Grab(group='io.grpc', module='grpc-stub', version='1.53.0')
-])
+
 
 import io.grpc.CallOptions;
 import io.grpc.Channel;
