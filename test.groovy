@@ -75,7 +75,7 @@
         //     sh "mvn clean verify"
         // } // withMa
         script {
-            if(fileExists('src/main')) {
+            if(fileExists('src/maerin')) {
                 echo 'ok'
             } else {
                 echo 'koko'
