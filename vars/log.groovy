@@ -36,9 +36,9 @@ import io.opentelemetry.api.metrics.LongCounter;
 import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.api.common.AttributesBuilder;
 
-d
 def meterCounter(Map config = [:]) {
-	println config.endpoint
+
+	try {
 	Resource resource = Resource.getDefault()
   .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "logical-service-name")));
 
@@ -70,4 +70,7 @@ OpenTelemetrySdk openTelemetrySdk = OpenTelemetrySdk.builder()
 	}
 	counter.add(1, attr.build());
 	openTelemetrySdk.getSdkMeterProvider().close();
+	} catch ( e ) {
+     
+}
 }
