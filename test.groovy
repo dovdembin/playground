@@ -82,7 +82,7 @@
                     sh 'curl -k -O "https://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/otel-jar-with-dependencies.jar"'
                     sh """
                         java -jar otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
-                        -l test.testlabel=""${bpt_labels}"" \
+                        -l test.testlabel="${bpt_labels}" \
                         -a test.name=koko 
                     """
                 }
