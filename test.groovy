@@ -75,14 +75,14 @@
         //     sh "mvn clean verify"
         // } // withMa
                 config_params       = ['xpoolAllocation':'--lg 1 -l @indus1\|@indus2\|@indus3,MLK']
-                bpt_labels="${config_params['xpoolAllocation']}"
+                bpt_labels=config_params['xpoolAllocation']
                 // println "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"
                 dir("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"){
 
                     sh 'curl -k -O "https://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/otel-jar-with-dependencies.jar"'
                     sh """
                         java -jar otel-jar-with-dependencies.jar -e "${OTEL_EXPORTER_OTLP_ENDPOINT}" -sig metric -m counter -n tridevlab.test-counter \
-                        -l test.testlabel="${bpt_labels}" \
+                        -l test.testlabel="'${bpt_labels}'" \
                         -a test.name=koko 
                     """
                 }
