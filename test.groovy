@@ -74,7 +74,7 @@
         // withMaven {
         //     sh "mvn clean verify"
         // } // withMa
-                bpt_labels="--lg 1 -l @indus1\|@indus2\|@indus3,MLK"
+                bpt_labels="'--lg 1 -l @indus1\|@indus2\|@indus3,MLK'"
                 println "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"
                 dir("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"){
                     sh 'curl -k -O "https://afeoscyc-mw.cec.lab.emc.com/artifactory/testsign/otel-jar-with-dependencies.jar"'
