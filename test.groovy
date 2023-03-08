@@ -74,7 +74,7 @@
         // withMaven {
         //     sh "mvn clean verify"
         // } // withMa
-                bpt_labels="'${LABELSENV}'"
+                bpt_labels='"${LABELSENV}"'
                 // println "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"
                 dir("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"){
 
