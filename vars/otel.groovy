@@ -7,7 +7,7 @@ def getLabels(String labels) {
 		} else {
 			return "noMatch"
 		}
-		
+
 	} else {
 		return "noLabel"
 	}
