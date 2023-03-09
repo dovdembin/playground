@@ -1,6 +1,3 @@
-import java.util.regex.Pattern
-
-
 def getLabels(String labels) {
 	if(labels!=null && !labels.isEmpty()) {
 		def pattern = ~".*-l(.*)"
