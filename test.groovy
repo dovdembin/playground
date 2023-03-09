@@ -35,7 +35,7 @@
 
 
 
-// @Library("shared-library") _
+@Library("shared-library") _
   
 // node { 
     
@@ -75,7 +75,8 @@
         //     sh "mvn clean verify"
         // } // withMa
                 config_params       = ['xpoolAllocation':'--lg 1 -l @indus1\\|@indus2\\|@indus3,MLK']
-                bpt_labels=config_params['xpoolAllocation']
+                bpt_labels=getLabels(config_params['xpoolAllocation'])
+                println "${bpt_labels}"
                 // println "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"
                 dir("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/target/"){
 
