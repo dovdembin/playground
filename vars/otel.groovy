@@ -1,14 +1,9 @@
-def getLabels(String labels) {
-	if(labels!=null && !labels.isEmpty()) {
-		def pattern = ~".*-l\\s(.*)"
-		def matcher = labels =~ pattern
-		if(matcher.size() > 0) {
-			return matcher[0][1].toString().replace("\\|", ",").trim();
-		} else {
-			return "noMatch"
-		}
-
+def getLabels(String text) {
+	def pattern = /.*-l\s(.*)/
+	if(text ==~ pattern) {
+		def (word1) = text =~ pattern
+		return  word1[1].toString().replaceAll(/\\\|/, ",")
 	} else {
-		return "noLabel"
+		return "noMatch"
 	}
 }
