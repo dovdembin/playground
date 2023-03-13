@@ -11,7 +11,7 @@ def getLabels(String text) {
 	 
 }
 
-@NonCPS
+
 ArrayList<String> getIntersection(String labels){
 	ArrayList listlabes = labels.split(",")
 	// println listlabes
@@ -22,7 +22,6 @@ ArrayList<String> getIntersection(String labels){
 	""", returnStdout: true, label: "xpool_allocation")
 	 	
 	ArrayList ljLabels = res.split(",")
-	println ljLabels
 	return listlabes.intersect(ljLabels)
 }
 
