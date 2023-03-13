@@ -14,7 +14,7 @@ def checkLabels(String text, String appliance) {
 }
 
 
-def getLabels(String text, String appliance) {
+def getLabels(String text2, String appliance2) {
 	
 	def pattern = /.*\s-l\s(.*)/
 	def lblList
