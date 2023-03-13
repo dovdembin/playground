@@ -3,7 +3,7 @@ def getLabels(String text) {
 	def res = sh(script: cmd, returnStdout: true, label: "xpool_allocation").trim()
 	
 	 
-	for( String values : str )
+	for( String values : res )
       println(values);
 	
 }
