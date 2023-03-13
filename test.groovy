@@ -119,7 +119,7 @@
     //     println env.OTEL_EXPORTER_OTLP_ENDPOINT
     
     
-    println otel.getLabels("--lg 1 -l indus1\\|indus2\\|indus3,PhysicalLG,powerActionSupported,@Indus_Not_Aligned", "WK-D0046");
+    println otel.getLabels("--lg 1 -l EX\\|MLK,PhysicalLG", "WK-D0046");
 }
 
 
