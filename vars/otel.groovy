@@ -1,6 +1,6 @@
 
 @NonCPS
-def checkLabels(String text, String appliance) {
+def checkLabels(String tags, String appliance) {
 	def pattern = /([A-Z][A-Z]-[A-Z]\d\d\d\d)-([A-Z][A-Z]-[A-Z]\d\d\d\d)-TAG/
 	if(appliance ==~ pattern){
 		def (res1) = appliance =~ pattern
@@ -10,7 +10,7 @@ def checkLabels(String text, String appliance) {
 		return createdList
 	}
 	else {
-		return getLabels(text, appliance)
+		return getLabels(tags, appliance)
 	}
 }
 
@@ -37,9 +37,9 @@ def getLabels(String str, String rig) {
 	return "klj,lkj"
 }
 
-@NonCPS
+
 def getLj(String machine) {
-	def res =  steps.sh(script:"""
+	def res =  script.sh(script:"""
 							curl -s --location 'http://labjungle.devops.xiodrm.lab.emc.com/api/v1/cluster/?name=${machine}' \
 							--header 'Authorization: ApiKey cute:9703aa016d613b2b21bbb0e6833c3078c811a5d1' | \
 							jq -r -j '.objects[] | .tags + \",\" + .generation.name'
