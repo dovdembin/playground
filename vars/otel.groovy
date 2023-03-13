@@ -10,6 +10,7 @@ def getLabels(String text) {
 	 
 }
 
+@NonCPS
 def getIntersection(String labels){
 	ArrayList listlabes = labels.split(",")
 	// println listlabes
