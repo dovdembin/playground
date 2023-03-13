@@ -1,4 +1,3 @@
-@NonCPS
 def getLabels(String text, String appliance) {
 	def pattern = /.*\s-l\s(.*)/
 	if(text ==~ pattern) {
