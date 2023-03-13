@@ -28,3 +28,4 @@ def getLabels(String text, String appliance) {
     return listlabes.intersect(ljLabels).join(", ")
 }
 
+checkLabels("", "WK-D0077-WK-D0661-TAG")
