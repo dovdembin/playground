@@ -13,6 +13,7 @@ def getLabels(String text) {
 	println origin
 	println arrList
 	println origin.intersect(arrList)
+	println arrList.intersect(origin)
 }
 
 
