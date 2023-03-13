@@ -119,7 +119,7 @@
     //     println env.OTEL_EXPORTER_OTLP_ENDPOINT
     
     
-    otel.getLabels("--lg 1 -l indus1\\|indus2\\|indus3,PhysicalLG,powerActionSupported,@Indus_Not_Aligned");
+    println otel.getLabels("--lg 1 -l indus1\\|indus2\\|indus3,PhysicalLG,powerActionSupported,@Indus_Not_Aligned");
 }
 
 
