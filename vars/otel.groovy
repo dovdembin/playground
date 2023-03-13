@@ -22,6 +22,7 @@ ArrayList<String> getIntersection(String labels){
 	""", returnStdout: true, label: "xpool_allocation")
 	 	
 	ArrayList ljLabels = res.split(",")
+	println ljLabels
 	return listlabes.intersect(ljLabels)
 }
 
