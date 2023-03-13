@@ -14,7 +14,7 @@ def getLabels(String text, String appliance) {
 	 	return res
 		ArrayList ljLabels = res.split(",")
 		ArrayList listlabes = lblList.split(",")
-        listlabes.intersect(ljLabels)
+        return listlabes.intersect(ljLabels)
 
 	} else {
 		return "noMatch"
