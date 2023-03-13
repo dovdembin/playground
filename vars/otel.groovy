@@ -17,6 +17,6 @@ def getLabels(String text, String appliance) {
 
 	ArrayList ljLabels = res.split(",")
 	ArrayList listlabes = lblList.split(",")
-    return listlabes.intersect(ljLabels)
+    return listlabes.intersect(ljLabels).toString()
 }
 
