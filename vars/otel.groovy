@@ -13,7 +13,7 @@ def checkLabels(String text, String appliance) {
 	}
 }
 
-@NonCPS
+
 def getLabels(String text, String appliance) {
 	
 	def pattern = /.*\s-l\s(.*)/
