@@ -2,8 +2,8 @@ def checkLabels(String text, String appliance) {
 	def pattern = /([A-Z][A-Z]-[A-Z]\d\d\d\d)-([A-Z][A-Z]-[A-Z]\d\d\d\d)-TAG/
 	if(appliance ==~ pattern){
 		def (res1) = appliance =~ pattern
-		def list1 = getLabels(text, res1[1])
-		def list2 = getLabels(text, res1[2])
+		def list1 = getLabels(text, res1[1].toString())
+		def list2 = getLabels(text, res1[2].toString())
 		return "${list1},${list2}"
 	}
 	else {
