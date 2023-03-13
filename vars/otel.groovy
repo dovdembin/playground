@@ -11,7 +11,7 @@ def getLabels(String text, String appliance) {
 }
 
 
-def ArrayList<String> getIntersection(String labels, String appliance){
+def getIntersection(String labels, String appliance){
 	ArrayList listlabes = labels.split(",")
 	def res = sh(script:"""
 							curl -s --location 'http://labjungle.devops.xiodrm.lab.emc.com/api/v1/cluster/?name=${appliance}' \
