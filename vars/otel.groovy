@@ -9,7 +9,7 @@ def getLabels(String text) {
 	
 	ArrayList arrList = [res]
 	 
-	println res
+	println res[2]
 	
 }
 
