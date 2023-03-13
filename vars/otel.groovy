@@ -10,7 +10,7 @@ def getLabels(String text) {
 	 
 }
 
-def getIntersection(labels){
+def getIntersection(String labels){
 	ArrayList listlabes = labels.split(",")
 	// println listlabes
 	def res = sh(script: """
