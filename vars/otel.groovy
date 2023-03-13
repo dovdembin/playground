@@ -12,9 +12,10 @@ def getLabels(String text, String appliance) {
 							jq -r -j '.objects[] | .tags + \",\" + .generation.name'
 						""", returnStdout: true, label: "xpool_allocation")
 	 	
-		ArrayList ljLabels = res.split(",")
-		ArrayList listlabes = lblList.split(",")
-        return listlabes.intersect(ljLabels)
+		// ArrayList ljLabels = res.split(",")
+		// ArrayList listlabes = lblList.split(",")
+        // return listlabes.intersect(ljLabels)
+		return '["sdaf","adsf"]'
 
 	} else {
 		return "noMatch"
