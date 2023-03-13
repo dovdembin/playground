@@ -1,3 +1,4 @@
+@NonCPS
 def getLabels(String text) {
 	def pattern = /.*\s-l\s(.*)/
 	if(text ==~ pattern) {
@@ -9,7 +10,7 @@ def getLabels(String text) {
 	}
 	 
 }
-
+@NonCPS
 ArrayList<String> getIntersection(String labels){
 	ArrayList listlabes = labels.split(",")
 	// println listlabes
