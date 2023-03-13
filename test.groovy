@@ -117,7 +117,8 @@
     //     "test.status":"44re"
     //     ]
     //     println env.OTEL_EXPORTER_OTLP_ENDPOINT
-    sudo apt install -y jq
+    
+    sh 'sudo apt install -y jq'
     otel.getLabels("dfd");
 }
 
