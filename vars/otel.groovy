@@ -8,9 +8,9 @@ def getLabels(String text) {
 	""", returnStdout: true, label: "xpool_allocation").replaceAll(/\"/, "")
 	
 	ArrayList arrList = res.split(",")
-	println arrList
-	println arrList[2]
-	
+	println(arrList.contains("DPE:NVME:MTC_8GBMN")); 
+	println(arrList.contains("DPE:NVME:MTC_8GBMN, DPE:NVME:PB23F02T"));
+	println(arrList.contains("DPE"));
 }
 
 
