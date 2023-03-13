@@ -37,7 +37,7 @@ def getLabels(String str, String rig) {
 	return "klj,lkj"
 }
 
-
+@NonCPS
 def getLj(String machine) {
 	def res =  steps.sh(script:"""
 							curl -s --location 'http://labjungle.devops.xiodrm.lab.emc.com/api/v1/cluster/?name=${machine}' \
