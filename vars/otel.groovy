@@ -6,6 +6,19 @@ def checkLabels(String text, String appliance) {
 
 
 
+def checkLabels(String text, String appliance) {
+	def pattern = /([A-Z][A-Z]-[A-Z]\d\d\d\d)-([A-Z][A-Z]-[A-Z]\d\d\d\d)-TAG/
+	if(appliance ==~ pattern){
+		def (res1) = appliance =~ pattern
+		def list1 = getLabels(text, res1[1])
+		def list2 = getLabels(text, res1[2])
+		return "${list1},${list2}"
+	}
+	else {
+		return getLabels(text, appliance)
+	}
+}
+
 def getLabels(String text, String appliance) {
 	
 	def pattern = /.*\s-l\s(.*)/
@@ -27,5 +40,3 @@ def getLabels(String text, String appliance) {
 	ArrayList listlabes = lblList.split(",")
     return listlabes.intersect(ljLabels).join(", ")
 }
-
-checkLabels("", "WK-D0077-WK-D0661-TAG")
