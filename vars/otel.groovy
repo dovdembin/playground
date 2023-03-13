@@ -8,8 +8,8 @@ def getLabels(String text) {
 	""", returnStdout: true, label: "xpool_allocation").replaceAll(/\"/, "")
 	
 	ArrayList arrList = res.split(",")
-	println res
-	println res[2]
+	println arrList
+	println arrList[2]
 	
 }
 
