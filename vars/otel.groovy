@@ -4,7 +4,8 @@ def checkLabels(String text, String appliance) {
 		def (res1) = appliance =~ pattern
 		def list1 = getLabels(text, res1[1].toString())
 		def list2 = getLabels(text, res1[2].toString())
-		return "${list1},${list2}"
+		println list1
+		// return "${list1},${list2}"
 	}
 	else {
 		return getLabels(text, appliance)
