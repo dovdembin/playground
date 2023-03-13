@@ -4,7 +4,7 @@ def getLabels(String text) {
 		def (word1) = text =~ pattern
 		def lblList = word1[1].toString().replaceAll(/\\\|/, ",").trim()
 		println(lblList)
-		return lblList
+		return getIntersection(lblList)
 	} else {
 		return "noMatch"
 	}
