@@ -3,7 +3,7 @@ def getLabels(String text, String appliance) {
 	def pattern = /.*\s-l\s(.*)/
 	if(text ==~ pattern) {
 		def (word1) = text =~ pattern
-		def lblList = word1[1].toString().replaceAll(/\\\|/, ",").trim()
+		lblList = word1[1].toString().replaceAll(/\\\|/, ",").trim()
 	} else {
 		return "noMatch"
 	}
