@@ -1,3 +1,11 @@
+def checkLabels(String text, String appliance) {
+	if(text ==~ /TAG/){
+		println "this is a federation"
+	}
+}
+
+
+
 def getLabels(String text, String appliance) {
 	
 	def pattern = /.*\s-l\s(.*)/
