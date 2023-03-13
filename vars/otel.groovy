@@ -1,9 +1,9 @@
 def getLabels(String text, String appliance) {
 	def pattern = /.*\s-l\s(.*)/
 	if(text ==~ pattern) {
-		def result = (text =~ /.*\s-l\s(.*)/)
+		// def result = (text =~ /.*\s-l\s(.*)/)
 
-        def  lblList = result[0][1].toString().replaceAll(/\\\|/) { match -> ","  }
+        // def  lblList = result[0][1].toString().replaceAll(/\\\|/) { match -> ","  }
 		
 		
 		def res = sh(script:"""
