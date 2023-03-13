@@ -6,7 +6,7 @@ def checkLabels(String text, String appliance) {
 		def (res1) = appliance =~ pattern
 		def list1 = getLabels(text, res1[1])
 		def list2 = getLabels(text, res1[2])
-		def createdList = list1.addAll(list2)
+		def createdList = list1 + list2
 		return createdList
 	}
 	else {
