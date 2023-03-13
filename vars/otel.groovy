@@ -7,8 +7,8 @@ def getLabels(String text) {
 	jq '.objects[] | {tags}'
 	""", returnStdout: true, label: "xpool_allocation").trim()
 	
-	def slurper = new JsonSlurper().parseText(res)
-	println slurper.tags
+	def jsonSlurper = new JsonSlurper()
+	
 	
 }
 
