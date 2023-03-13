@@ -1,3 +1,4 @@
+@NonCPS
 def checkLabels(String text, String appliance) {
 	def pattern = /([A-Z][A-Z]-[A-Z]\d\d\d\d)-([A-Z][A-Z]-[A-Z]\d\d\d\d)-TAG/
 	if(appliance ==~ pattern){
@@ -11,7 +12,7 @@ def checkLabels(String text, String appliance) {
 		return getLabels(text, appliance)
 	}
 }
-
+@NonCPS
 def getLabels(String text, String appliance) {
 	
 	def pattern = /.*\s-l\s(.*)/
