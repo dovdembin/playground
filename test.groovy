@@ -118,7 +118,7 @@
     //     ]
     //     println env.OTEL_EXPORTER_OTLP_ENDPOINT
     
-    def config_params = ['xpoolAllocation':'']
+    def config_params = [:]
 
     println otel.getLabels(config_params['xpoolAllocation'], "WK-D0046");
 }
