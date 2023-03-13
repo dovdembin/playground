@@ -1,8 +1,9 @@
 def getLabels(String text, String appliance) {
-	// def pattern = /.*\s-l\s(.*)/
-	// if(text ==~ pattern) {
-	// 	def (word1) = text =~ pattern
-	// 	def lblList = word1[1].toString().replaceAll(/\\\|/, ",").trim()
+	def pattern = /.*\s-l\s(.*)/
+	if(text ==~ pattern) {
+		def result = (str =~ /.*\s-l\s(.*)/)
+
+        def  lblList = result[0][1].toString().replaceAll(/\\\|/) { match -> ","  }
 		
 		
 		def res = sh(script:"""
@@ -11,13 +12,13 @@ def getLabels(String text, String appliance) {
 							jq -r -j '.objects[] | .tags + \",\" + .generation.name'
 						""", returnStdout: true, label: "xpool_allocation")
 	 	return res
-		// ArrayList ljLabels = res.split(",")
-		// ArrayList listlabes = lblList.split(",")
-        // listlabes.intersect(ljLabels)
+		ArrayList ljLabels = res.split(",")
+		ArrayList listlabes = lblList.split(",")
+        listlabes.intersect(ljLabels)
 
-	// } else {
-	// 	return "noMatch"
-	// }
+	} else {
+		return "noMatch"
+	}
 	 
 }
 
