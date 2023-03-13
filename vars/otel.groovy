@@ -7,6 +7,7 @@ def getLabels(String text) {
 	jq '.objects[].tags'
 	""", returnStdout: true, label: "xpool_allocation").replaceAll(/\"/, "")
 	
+	ArrayList arrList = res
 	 
 	println res
 	
