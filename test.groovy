@@ -118,8 +118,9 @@
     //     ]
     //     println env.OTEL_EXPORTER_OTLP_ENDPOINT
     
-    
-    println otel.getLabels("--lg 1 -l EX\\|MLK,PhysicalLG", "WK-D0046");
+    def map = ['xpoolAllocation':'--lg 1 -l EX\\|MLK,PhysicalLG']
+
+    println otel.getLabels(config_params['xpoolAllocation'], "WK-D0046");
 }
 
 
