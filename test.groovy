@@ -118,7 +118,7 @@
     //     ]
     //     println env.OTEL_EXPORTER_OTLP_ENDPOINT
     
-    sh 'sudo apt install -y jq'
+    sh 'apt install -y jq'
     otel.getLabels("dfd");
 }
 
