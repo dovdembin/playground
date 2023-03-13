@@ -37,8 +37,9 @@ def getLabels(String str, String rig) {
 	return "klj,lkj"
 }
 
+
 def getLj(String machine) {
-	def res = sh(script:"""
+	def res =  steps.sh(script:"""
 							curl -s --location 'http://labjungle.devops.xiodrm.lab.emc.com/api/v1/cluster/?name=${machine}' \
 							--header 'Authorization: ApiKey cute:9703aa016d613b2b21bbb0e6833c3078c811a5d1' | \
 							jq -r -j '.objects[] | .tags + \",\" + .generation.name'
