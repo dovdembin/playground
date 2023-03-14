@@ -19,7 +19,7 @@ def checkLabels(String text, String appliance) {
 
 
 def getLabels(String str, String rig) {
-	def pattern = /.*\s-l\s(.*)/
+	def pattern = /.*-l\s(.*)/
 	def lblList
 	if(str ==~ pattern) {
 		def (word1) = str =~ pattern
