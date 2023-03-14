@@ -11,8 +11,8 @@ def checkLabels(String text, String appliance) {
 	else {
 		return getLabels(text, appliance)
 	}
-	def list1 = getLabels(text, m1)
-	def list2 = getLabels(text, m2)
+	ArrayList list1 = getLabels(text, m1)
+	ArrayList list2 = getLabels(text, m2)
 	def createdList = list1 + list2
 }
 
