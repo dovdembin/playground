@@ -14,7 +14,7 @@ def checkLabels(String text, String appliance) {
 	ArrayList list1 = getLabels(text, m1).split(",")
 	ArrayList list2 = getLabels(text, m2).split(",")
 	def createdList = list1 + list2
-	return createdList.unique().join(", ")
+	return createdList.unique().join(",")
 }
 
 
@@ -35,5 +35,5 @@ def getLabels(String str, String rig) {
 
 	ArrayList ljLabels = res.split(",")
 	ArrayList listlabes = lblList.split(",")
-    return listlabes.intersect(ljLabels).join(", ")
+    return listlabes.intersect(ljLabels).join(",")
 }
