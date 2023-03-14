@@ -14,6 +14,7 @@ def checkLabels(String text, String appliance) {
 	ArrayList list1 = getLabels(text, m1).split(",")
 	ArrayList list2 = getLabels(text, m2).split(",")
 	def createdList = list1 + list2
+	return createdList.unique()
 }
 
 
