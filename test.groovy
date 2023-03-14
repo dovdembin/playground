@@ -87,9 +87,9 @@
                 //         -a test.name=koko 
                 //     """
                 // }
-    def config_params = ['xpoolAllocation':'--lg 1 -l @indus1\\|@indus2\\|@indus3,MLK']
+def config_params = ['xpoolAllocation':'--federation 1,1 -l EX\\|MLK,PhysicalLG']
 
-    println otel.checkLabels(config_params['xpoolAldlocation'], "");
+    println otel.checkLabels(config_params['xpoolAllocation'], "WK-D0077-WK-D0661-TAG");
         }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
