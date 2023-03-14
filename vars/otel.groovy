@@ -17,7 +17,7 @@ def checkLabels(String text, String appliance) {
 	}
 }
 
-@NonCPS
+
 def getLabels(String str, String rig) {
 	println rig
 	def pattern = /.*\s-l\s(.*)/
@@ -39,7 +39,6 @@ def getLabels(String str, String rig) {
     return listlabes.intersect(ljLabels).join(", ")
 }
 
-@NonCPS
 def getLj(String machine) {
 	def res =  script.sh(script:"""
 							curl -s --location 'http://labjungle.devops.xiodrm.lab.emc.com/api/v1/cluster/?name=${machine}' \
