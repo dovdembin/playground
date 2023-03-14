@@ -87,7 +87,7 @@
                 //         -a test.name=koko 
                 //     """
                 // }
-def config_params = ['--lg 1 -l @indus1\\|@indus2\\|@indus3,MLK']
+    def config_params = ['xpoolAllocation':'--lg 1 -l @indus1\\|@indus2\\|@indus3,MLK']
 
     println otel.checkLabels(config_params['xpoolAllocation'], "WK-D0026");
         }
