@@ -1,6 +1,6 @@
 
 def checkLabels(String text, String appliance) {
-	def pattern = /([A-Z][A-Z]-[A-Z]\d\d\d\d)-([A-Z][A-Z]-[A-Z]\d\d\d\d)-TAG/
+	def pattern = /([A-Z][A-Z]-[A-Z]\d\d\d\d)-([A-Z][A-Z]-[A-Z]\d\d\d\d)-.*/
 	def m1
 	def m2
 	if(appliance ==~ pattern){

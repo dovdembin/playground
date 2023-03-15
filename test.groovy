@@ -89,7 +89,7 @@
                 // }
 def config_params = ['xpoolAllocation':'--federation 2 -l EX\\|Riptide,PhysicalLG,CopperBlade\\|LightBlade']
 
-    println otel.checkLabels(config_params['xpoolAllocation'], "WX-H7101-WX-H7106-TdAG");
+    println otel.checkLabels(config_params['xpoolAllocation'], "WX-H7101-WX-H7106-federation-TAG");
         }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
