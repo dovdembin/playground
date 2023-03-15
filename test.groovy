@@ -87,9 +87,9 @@
                 //         -a test.name=koko 
                 //     """
                 // }
-def config_params = ['xpoolAllocation':'-l indus1\\|indus2\\|indus3,@Indus_Not_Aligned']
+def config_params = ['xpoolAllocation':'--federation 2 -l EX\\|Riptide,PhysicalLG,CopperBlade\\|LightBlade']
 
-    println otel.checkLabels(config_params['xpoolAllocation'], "WK-D0115");
+    println otel.checkLabels(config_params['xpoolAllocation'], "WX-H7101-WX-H7106-TdAG");
         }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
