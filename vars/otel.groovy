@@ -40,5 +40,5 @@ def getLabels(String str, String rig) {
 							jq '.objects[].generation.name'
 						""", returnStdout: true, label: "xpool_allocation")
 	println generation
-    return listlabes.intersect(ljLabels).add(generation).join(",")
+    return listlabes.intersect(ljLabels).add(generation)
 }
