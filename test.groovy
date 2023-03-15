@@ -87,9 +87,9 @@
                 //         -a test.name=koko 
                 //     """
                 // }
-def config_params = ['xpoolAllocation':'-l Stratus,VirtualLG']
+def config_params = ['xpoolAllocation':'--federation 2 -l EX\\|Riptide,PhysicalLG,CopperBlade\\|LightBlade']
 
-    println otel.checkLabels(config_params['xpoolAllocation'], "ST-H1025");
+    println otel.checkLabels(config_params['xpoolAllocation'], "WX-D1333-WX-D1309-federation-TAG");
         }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
