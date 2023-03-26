@@ -63,10 +63,42 @@
              
 //     }
 // }
+def countTestOTel(duration, end_status) {
+    sh(script: """
+        docker run --rm -e env.OTEL_EXPORTER_OTLP_ENDPOINT \
+            afeoscyc-mw.cec.lab.emc.com/otel-cli-python:0.4.0 \
+            metric counter tridevlab.test-counter \
+            -a "test.name=aaa" \
+            -a "test.bpt-suite=bbbbb" \
+            -a "test.bpt-merge-candidate=cccc" \
+            -a "int:test.duration=ddd" \
+            -a "test.source=eee" \
+            -a "test.agent-name=fff" \
+            -a "test.ibid=ggg" \
+            -a "test.program-branch=hhhhh" \
+            -a "test.flavor=eee" \
+            -a "test.github.pr.id=iiii" \
+            -a "test.github.pr.url=jjjjj" \
+            -a "test.github.pr.author.login=kkkkkk" \
+            -a "test.github.pr.author.email=llllll" \
+            -a "test.github.source-branch=mmmmmm" \
+            -a "test.github.target-branch=nnnnnnn" \
+            -a "test.package-url=oooooo" \
+            -a "test.slave-name=ppppp" \
+            -a "int:test.jenkins.build-number=qqqqq" \
+            -a "test.jenkins.build-url=rrrrrr" \
+            -a "test.dingo.unique-id=sssss" \
+            -a "test.sequential.appliance=tttttt" \
+            -a "test.cyc-test=uuuuu" \
+            -a "test.status=vvvvvv"
+    """, label: "Report OTel", returnStatus: true)
+}
 
  node {  
     stage('Build') { 
-        
+         
+        def duration = currentBuild.duration
+        countTestOTel(duration, "Success")
         // sh(script: "java -jar otel.jar -e http://172.30.48.1:4317 -c tridevlab.test-counter", label: "verify_content.sh") 
         // git branch: 'main', url: 'https://github.com/dovdembin/otelcli.git'
 
@@ -87,9 +119,9 @@
                 //         -a test.name=koko 
                 //     """
                 // }
-def config_params = ['xpoolAllocation':'-l @VEX']
+// def config_params = ['xpoolAllocation':'-l @VEX']
 
-    println otel.checkLabels(config_params['xpoolAllocation'], "WK-H2686");
+    // println otel.checkLabels(config_params['xpoolAllocation'], "WK-H2686");
         }
     // def map = [
     //     endpoint:env.OTEL_EXPORTER_OTLP_ENDPOINT, 
